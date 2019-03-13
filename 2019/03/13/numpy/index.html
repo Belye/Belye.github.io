@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
-    <meta name="keywords" content="Fechin,"> 
+    <meta name="keywords" content="Leiy,"> 
     <meta name="description" content="医学影像与深度学习交叉领域萌新一枚,"> 
     <meta name="author" content="Leiy"> 
     <link rel="alternative" href="atom.xml" title="Leiy" type="application/atom+xml"> 
@@ -425,27 +425,15 @@ arr = [[ 0  1  2  3  4]
 
     </div>
     
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ndarray-N-dimensional-array-的创建"><span class="toc-number">1.</span> <span class="toc-text">ndarray(N-dimensional array)的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通过列表创建"><span class="toc-number">1.1.</span> <span class="toc-text">通过列表创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过元祖创建"><span class="toc-number">1.2.</span> <span class="toc-text">通过元祖创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过元祖列表创建"><span class="toc-number">1.3.</span> <span class="toc-text">通过元祖列表创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过zeros-ones-empty-arange-linspace-logspace函数创建"><span class="toc-number">1.4.</span> <span class="toc-text">通过zeros,ones,empty,arange,linspace,logspace函数创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机生成"><span class="toc-number">1.5.</span> <span class="toc-text">随机生成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ndarray对象属性-基本数据类型-reshape操作"><span class="toc-number">2.</span> <span class="toc-text">ndarray对象属性,基本数据类型,reshape操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ndarray对象属性"><span class="toc-number">2.1.</span> <span class="toc-text">ndarray对象属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ndarray基本数据类型"><span class="toc-number">2.2.</span> <span class="toc-text">ndarray基本数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reshape操作"><span class="toc-number">2.3.</span> <span class="toc-text">reshape操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#numpy基本操作"><span class="toc-number">3.</span> <span class="toc-text">numpy基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组与标量、数组之间的运算"><span class="toc-number">3.1.</span> <span class="toc-text">数组与标量、数组之间的运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numpy中的广播功能"><span class="toc-number">3.2.</span> <span class="toc-text">numpy中的广播功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的矩阵积"><span class="toc-number">3.3.</span> <span class="toc-text">数组的矩阵积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的索引和切片"><span class="toc-number">3.4.</span> <span class="toc-text">数组的索引和切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#花式索引和布尔索引"><span class="toc-number">3.5.</span> <span class="toc-text">花式索引和布尔索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的转置与轴对换"><span class="toc-number">3.6.</span> <span class="toc-text">数组的转置与轴对换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的拉伸与合并"><span class="toc-number">3.7.</span> <span class="toc-text">数组的拉伸与合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用函数-快速的元素级数组成函数"><span class="toc-number">3.8.</span> <span class="toc-text">通用函数:快速的元素级数组成函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚合函数"><span class="toc-number">3.9.</span> <span class="toc-text">聚合函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#np-where函数"><span class="toc-number">3.10.</span> <span class="toc-text">np.where函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#np-unique函数"><span class="toc-number">3.11.</span> <span class="toc-text">np.unique函数</span></a></li></ol></li></ol>
+        </div>
+    
 </div>
 
 
     </div>
-</div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
