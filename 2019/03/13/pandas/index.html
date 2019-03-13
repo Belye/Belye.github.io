@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="pVysg9q-qNXcBvDDawA4Wiz0bbw9qbTzhPO0uzvcoPg" />
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32×32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16×16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Pandas," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Pandas基本数据结构 pandas中主要的数据结构为Series和DataFrame,其中Series是一种类似于一维数据的对象,由一组数据以及与之相关的数据标签组成，仅由一组数据也是可以产生简单的Seriesd对象，注意:Series中的索引值也是可以重复的。DataFrame是一种表格型数据结构，包含一组有序的列，每列可以是不同的值类型(数值,字符串,布尔型)，DataFram有行索引也有">
+<meta name="keywords" content="Pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pandas总结">
+<meta property="og:url" content="http://leiy.live/2019/03/13/pandas/index.html">
+<meta property="og:site_name" content="Leiy">
+<meta property="og:description" content="Pandas基本数据结构 pandas中主要的数据结构为Series和DataFrame,其中Series是一种类似于一维数据的对象,由一组数据以及与之相关的数据标签组成，仅由一组数据也是可以产生简单的Seriesd对象，注意:Series中的索引值也是可以重复的。DataFrame是一种表格型数据结构，包含一组有序的列，每列可以是不同的值类型(数值,字符串,布尔型)，DataFram有行索引也有">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-24T02:15:30.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pandas总结">
+<meta name="twitter:description" content="Pandas基本数据结构 pandas中主要的数据结构为Series和DataFrame,其中Series是一种类似于一维数据的对象,由一组数据以及与之相关的数据标签组成，仅由一组数据也是可以产生简单的Seriesd对象，注意:Series中的索引值也是可以重复的。DataFrame是一种表格型数据结构，包含一组有序的列，每列可以是不同的值类型(数值,字符串,布尔型)，DataFram有行索引也有">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leiy.live/2019/03/13/pandas/"/>
+
+
+
+
+
+  <title>Pandas总结 | Leiy</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Leiy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">ML & DL</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://leiy.live/2019/03/13/pandas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leiy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leiy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Pandas总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-13T12:30:03+08:00">
+                2019-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DL-ML-扩展包/" itemprop="url" rel="index">
+                    <span itemprop="name">DL & ML 扩展包</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DL-ML-扩展包/Pandas总结/" itemprop="url" rel="index">
+                    <span itemprop="name">Pandas总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/13/pandas/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/03/13/pandas/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/03/13/pandas/" class="leancloud_visitors" data-flag-title="Pandas总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Pandas基本数据结构"><a href="#Pandas基本数据结构" class="headerlink" title="Pandas基本数据结构"></a>Pandas基本数据结构</h1><blockquote>
+<p>pandas中主要的数据结构为Series和DataFrame,其中Series是一种类似于一维数据的对象,由一组数据以及与之相关的数据标签组成，仅由一组数据也是可以产生简单的Seriesd对象，注意:Series中的索引值也是可以重复的。DataFrame是一种表格型数据结构，包含一组有序的列，每列可以是不同的值类型(数值,字符串,布尔型)，DataFram有行索引也有列索引，可以看作是Series组成的字典。</p>
+</blockquote>
+<p><br><br><br><br><br></p>
+<h1 id="Series基本概述"><a href="#Series基本概述" class="headerlink" title="Series基本概述"></a>Series基本概述</h1><h2 id="Series创建"><a href="#Series创建" class="headerlink" title="Series创建"></a>Series创建</h2><h3 id="使用列表创建Series"><a href="#使用列表创建Series" class="headerlink" title="使用列表创建Series"></a>使用列表创建Series</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">ser</span><br></pre></td></tr></table></figure>
+<pre><code>0    1
+1    2
+2    3
+3    4
+dtype: int64
+</code></pre><h3 id="使用数组创建"><a href="#使用数组创建" class="headerlink" title="使用数组创建"></a>使用数组创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>))</span><br><span class="line">ser</span><br></pre></td></tr></table></figure>
+<pre><code>0    2
+1    4
+2    2
+3    6
+4    1
+dtype: int64
+</code></pre><h3 id="使用字典创建"><a href="#使用字典创建" class="headerlink" title="使用字典创建"></a>使用字典创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">'a'</span> : <span class="number">1</span>,</span><br><span class="line">    <span class="string">'b'</span> : <span class="number">2</span>,</span><br><span class="line">    <span class="string">'c'</span> : <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">ser = pd.Series(dic)</span><br><span class="line">ser</span><br></pre></td></tr></table></figure>
+<pre><code>a    1
+b    2
+c    3
+dtype: int64
+</code></pre><h2 id="Series的index和value"><a href="#Series的index和value" class="headerlink" title="Series的index和value"></a>Series的index和value</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">'a'</span> : <span class="number">1</span>,</span><br><span class="line">    <span class="string">'b'</span> : <span class="number">2</span>,</span><br><span class="line">    <span class="string">'c'</span> : <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">ser = pd.Series(dic)</span><br><span class="line">print(ser)</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">50</span>)</span><br><span class="line">print(ser.index)</span><br><span class="line">print(ser.values)</span><br></pre></td></tr></table></figure>
+<pre><code>a    1
+b    2
+c    3
+dtype: int64
+--------------------------------------------------
+Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], dtype=&#39;object&#39;)
+[1 2 3]
+</code></pre><h2 id="修改和指定index"><a href="#修改和指定index" class="headerlink" title="修改和指定index"></a>修改和指定index</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改index</span></span><br><span class="line">arr = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>))</span><br><span class="line">print(arr)</span><br><span class="line">print(<span class="string">'---------------index修改后---------------------'</span>)</span><br><span class="line">arr.index = list(<span class="string">'abcde'</span>)</span><br><span class="line">print(arr)</span><br></pre></td></tr></table></figure>
+<pre><code>0    6
+1    4
+2    7
+3    2
+4    1
+dtype: int64
+---------------index修改后---------------------
+a    6
+b    4
+c    7
+d    2
+e    1
+dtype: int64
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建时指定index</span></span><br><span class="line">arr = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>),index = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>])</span><br><span class="line">arr</span><br></pre></td></tr></table></figure>
+<pre><code>a    4
+b    3
+c    8
+d    4
+e    7
+dtype: int64
+</code></pre><h2 id="常见属性"><a href="#常见属性" class="headerlink" title="常见属性"></a>常见属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>),index = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>])</span><br><span class="line">print(ser)</span><br><span class="line">print(<span class="string">'---------------增加一个index-----------------------'</span>)</span><br><span class="line">ser.name = <span class="string">'Leiy'</span> <span class="comment"># 如果不存在name自动创建 如果存在这一步就是改变name对应的value </span></span><br><span class="line">print(ser)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------常见Series属性-----------------------'</span>)</span><br><span class="line">print(<span class="string">'行轴标签数据列表为:'</span>,ser.axes)</span><br><span class="line">print(<span class="string">'对象的数据类型:'</span>,ser.dtype)</span><br><span class="line">print(<span class="string">'检测系列是否为空:'</span>,ser.empty)</span><br><span class="line">print(<span class="string">'底层数据的维度:'</span>,ser.ndim)</span><br><span class="line">print(<span class="string">'基层数据中的元素数目:'</span>,ser.size)</span><br><span class="line">print(<span class="string">'返回数据的前3行:'</span>,ser.head(<span class="number">3</span>))</span><br><span class="line">print(<span class="string">'返回数据的后3行:'</span>,ser.tail(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>a    5
+b    7
+c    8
+d    7
+e    5
+dtype: int64
+---------------增加一个index-----------------------
+a    5
+b    7
+c    8
+d    7
+e    5
+Name: Leiy, dtype: int64
+---------------常见Series属性-----------------------
+行轴标签数据列表为: [Index([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;], dtype=&#39;object&#39;)]
+对象的数据类型: int64
+检测系列是否为空: False
+底层数据的维度: 1
+基层数据中的元素数目: 5
+返回数据的前3行: 
+a    5
+b    7
+c    8
+Name: Leiy, dtype: int64
+返回数据的后3行: 
+d    7
+e    5
+Name: Leiy, dtype: int64
+</code></pre><h2 id="索引与切片"><a href="#索引与切片" class="headerlink" title="索引与切片"></a>索引与切片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>),index = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>])</span><br><span class="line">print(ser)</span><br><span class="line">print(<span class="string">'---------------索引-----------------------'</span>)</span><br><span class="line">print(ser[<span class="string">'a'</span>])</span><br><span class="line">print(ser[<span class="number">0</span>]) <span class="comment"># 数字下标索引</span></span><br><span class="line">print(ser[[<span class="string">'a'</span>,<span class="string">'c'</span>]])</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------切片-----------------------'</span>)</span><br><span class="line">print(ser[<span class="string">'a'</span>:<span class="string">'c'</span>])</span><br><span class="line">print(ser[<span class="number">0</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>a    1
+b    4
+c    1
+d    7
+e    5
+dtype: int64
+---------------索引-----------------------
+1
+1
+a    1
+c    1
+dtype: int64
+---------------切片-----------------------
+a    1
+b    4
+c    1
+dtype: int64
+a    1
+b    4
+c    1
+dtype: int64
+</code></pre><h2 id="Series运算"><a href="#Series运算" class="headerlink" title="Series运算"></a>Series运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ser1 = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>))</span><br><span class="line">ser2 = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>))</span><br><span class="line">print(ser1)</span><br><span class="line">print(ser2)</span><br><span class="line">print(<span class="string">'---------------Series与标量的运算-----------------------'</span>)</span><br><span class="line">print(ser1 + <span class="number">10</span>)</span><br><span class="line">print(ser1 - <span class="number">10</span>)</span><br><span class="line">print(ser1 * <span class="number">10</span>)</span><br><span class="line">print(ser1 / <span class="number">10</span>)</span><br><span class="line">print(ser1 ** <span class="number">2</span>)</span><br><span class="line">print(<span class="string">'---------------Series与Series的运算--------------------'</span>)</span><br><span class="line">print(ser1 + ser2)</span><br><span class="line">print(ser1 - ser2)</span><br><span class="line">print(ser1 * ser2)</span><br><span class="line">print(ser1 / ser2)</span><br><span class="line">print(ser1 ** ser2)</span><br><span class="line">print(<span class="string">'---------------Series的其他运算------------------------'</span>)</span><br><span class="line">print(np.log(ser1))</span><br><span class="line">print(np.exp(ser1))</span><br><span class="line">print(ser &lt; <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>0    1
+1    2
+2    3
+3    2
+4    3
+dtype: int64
+0    2
+1    4
+2    1
+3    4
+4    1
+dtype: int64
+---------------Series与标量的运算-----------------------
+0    11
+1    12
+2    13
+3    12
+4    13
+dtype: int64
+0   -9
+1   -8
+2   -7
+3   -8
+4   -7
+dtype: int64
+0    10
+1    20
+2    30
+3    20
+4    30
+dtype: int64
+0    0.1
+1    0.2
+2    0.3
+3    0.2
+4    0.3
+dtype: float64
+0    1
+1    4
+2    9
+3    4
+4    9
+dtype: int64
+---------------Series与Series的运算--------------------
+0    3
+1    6
+2    4
+3    6
+4    4
+dtype: int64
+0   -1
+1   -2
+2    2
+3   -2
+4    2
+dtype: int64
+0    2
+1    8
+2    3
+3    8
+4    3
+dtype: int64
+0    0.5
+1    0.5
+2    3.0
+3    0.5
+4    3.0
+dtype: float64
+0     1
+1    16
+2     3
+3    16
+4     3
+dtype: int64
+---------------Series的其他运算------------------------
+0    0.000000
+1    0.693147
+2    1.098612
+3    0.693147
+4    1.098612
+dtype: float64
+0     2.718282
+1     7.389056
+2    20.085537
+3     7.389056
+4    20.085537
+dtype: float64
+0     True
+1    False
+2    False
+3    False
+4    False
+dtype: bool
+</code></pre><h2 id="Series自动对齐、缺失值过滤"><a href="#Series自动对齐、缺失值过滤" class="headerlink" title="Series自动对齐、缺失值过滤"></a>Series自动对齐、缺失值过滤</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ser01 = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>), index = list(<span class="string">'abcde'</span>))</span><br><span class="line">ser02 = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">5</span>,<span class="number">5</span>), index = list(<span class="string">'abmne'</span>))</span><br><span class="line">print(ser01)</span><br><span class="line">print(ser02)</span><br><span class="line">print(<span class="string">'---------------Series自动对齐-----------------------'</span>)</span><br><span class="line">mask = ser01 + ser02</span><br><span class="line">print(mask)</span><br><span class="line">print(<span class="string">'---------------Series缺失值过滤---------------------'</span>)</span><br><span class="line">print(np.isnan(mask))</span><br><span class="line">print(mask[~np.isnan(mask)]) <span class="comment">#或者 print(mask[mask.notnull()])</span></span><br></pre></td></tr></table></figure>
+<pre><code>a    2
+b    2
+c    2
+d    4
+e    3
+dtype: int64
+a    4
+b    3
+m    4
+n    3
+e    3
+dtype: int64
+---------------Series自动对齐-----------------------
+a    6.0
+b    5.0
+c    NaN
+d    NaN
+e    6.0
+m    NaN
+n    NaN
+dtype: float64
+---------------Series缺失值过滤---------------------
+a    False
+b    False
+c     True
+d     True
+e    False
+m     True
+n     True
+dtype: bool
+a    6.0
+b    5.0
+e    6.0
+dtype: float64
+</code></pre><p><br><br><br><br><br></p>
+<h1 id="DataFrame概述"><a href="#DataFrame概述" class="headerlink" title="DataFrame概述"></a>DataFrame概述</h1><h2 id="DataFrame创建-amp-重置索引"><a href="#DataFrame创建-amp-重置索引" class="headerlink" title="DataFrame创建 &amp; 重置索引"></a>DataFrame创建 &amp; 重置索引</h2><h3 id="使用列表创建"><a href="#使用列表创建" class="headerlink" title="使用列表创建"></a>使用列表创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list1 = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]]</span><br><span class="line">df01 = pd.DataFrame(list1)</span><br><span class="line">print(df01.index) <span class="comment"># df01的横向索引</span></span><br><span class="line">print(df01.columns) <span class="comment"># df01的纵向索引</span></span><br><span class="line">print(df01.values) <span class="comment"># df01的值 </span></span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">50</span>)</span><br><span class="line">print(df01)</span><br></pre></td></tr></table></figure>
+<pre><code>RangeIndex(start=0, stop=2, step=1)
+RangeIndex(start=0, stop=4, step=1)
+[[1 2 3 4]
+[5 6 7 8]]
+--------------------------------------------------
+   0  1  2  3
+0  1  2  3  4
+1  5  6  7  8
+</code></pre><h3 id="使用series创建"><a href="#使用series创建" class="headerlink" title="使用series创建"></a>使用series创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ser01 = pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line">ser02 = pd.Series([<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>])</span><br><span class="line">df = pd.DataFrame([ser01,ser02])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<pre><code>   0  1  2  3
+0  1  2  3  4
+1  5  6  7  8
+</code></pre><h3 id="使用数组创建-1"><a href="#使用数组创建-1" class="headerlink" title="使用数组创建"></a>使用数组创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr = np.random.randint(<span class="number">1</span>,<span class="number">9</span>,(<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">df = pd.DataFrame(arr)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<pre><code>   0  1  2
+0  1  3  4
+1  3  3  2
+2  3  1  6
+</code></pre><h3 id="使用字典创建-1"><a href="#使用字典创建-1" class="headerlink" title="使用字典创建"></a>使用字典创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">'name'</span>:[<span class="string">'joe'</span>,<span class="string">'anne'</span>,<span class="string">'yilianna'</span>],</span><br><span class="line">    <span class="string">'age'</span> : [<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>],</span><br><span class="line">    <span class="string">'class'</span> : <span class="number">1</span> <span class="comment">#整列数据可以标量填充</span></span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(dic)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<pre><code>       name  age  class
+0       joe   18      1
+1      anne   19      1
+2  yilianna   20      1
+</code></pre><h3 id="重置索引"><a href="#重置索引" class="headerlink" title="重置索引"></a>重置索引</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">'name'</span>:[<span class="string">'joe'</span>,<span class="string">'anne'</span>,<span class="string">'yilianna'</span>],</span><br><span class="line">    <span class="string">'age'</span> : [<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>],</span><br><span class="line">    <span class="string">'class'</span> : <span class="number">1</span> <span class="comment">#整列数据可以标量填充</span></span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(dic)</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">50</span>)</span><br><span class="line">df.index = list(<span class="string">'abc'</span>) <span class="comment">#修改横向索引</span></span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">50</span>)</span><br><span class="line">df.columns = list(<span class="string">'ABC'</span>) <span class="comment">#修改纵向索引</span></span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>       name  age  class
+0       joe   18      1
+1      anne   19      1
+2  yilianna   20      1
+--------------------------------------------------
+       name  age  class
+a       joe   18      1
+b      anne   19      1
+c  yilianna   20      1
+--------------------------------------------------
+          A   B  C
+a       joe  18  1
+b      anne  19  1
+c  yilianna  20  1
+</code></pre><h2 id="增删改查操作"><a href="#增删改查操作" class="headerlink" title="增删改查操作"></a>增删改查操作</h2><h3 id="增删改查列操作"><a href="#增删改查列操作" class="headerlink" title="增删改查列操作"></a>增删改查列操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">'name'</span>:[<span class="string">'joe'</span>,<span class="string">'anne'</span>,<span class="string">'yilianna'</span>],</span><br><span class="line">    <span class="string">'age'</span> : [<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>],</span><br><span class="line">    <span class="string">'class'</span> : <span class="number">1</span> <span class="comment">#整列数据可以标量填充</span></span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(dic)</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'---------------列操作 查-----------------------------'</span>)</span><br><span class="line">print(df[<span class="string">'name'</span>])</span><br><span class="line">print(df[[<span class="string">'name'</span>,<span class="string">'age'</span>]]) <span class="comment">#获取多列数据</span></span><br><span class="line">print(<span class="string">'---------------列操作 增-----------------------------'</span>)</span><br><span class="line">df[<span class="string">'address'</span>] = [<span class="string">'usa'</span>,<span class="string">'uk'</span>,<span class="string">'cn'</span>]</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'---------------列操作 删-----------------------------'</span>)</span><br><span class="line">df.pop(<span class="string">'address'</span>)</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'---------------列操作 改-----------------------------'</span>)</span><br><span class="line">df[<span class="string">'class'</span>] = [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>       name  age  class
+0       joe   18      1
+1      anne   19      1
+2  yilianna   20      1
+---------------列操作 查-----------------------------
+0         joe
+1        anne
+2    yilianna
+Name: name, dtype: object
+       name  age
+0       joe   18
+1      anne   19
+2  yilianna   20
+---------------列操作 增-----------------------------
+       name  age  class address
+0       joe   18      1     usa
+1      anne   19      1      uk
+2  yilianna   20      1      cn
+---------------列操作 删-----------------------------
+       name  age  class
+0       joe   18      1
+1      anne   19      1
+2  yilianna   20      1
+---------------列操作 改-----------------------------
+       name  age  class
+0       joe   18      3
+1      anne   19      4
+2  yilianna   20      5
+</code></pre><h3 id="增删改查行操作"><a href="#增删改查行操作" class="headerlink" title="增删改查行操作"></a>增删改查行操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">'name'</span>:[<span class="string">'joe'</span>,<span class="string">'anne'</span>,<span class="string">'yilianna'</span>],</span><br><span class="line">    <span class="string">'age'</span> : [<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>],</span><br><span class="line">    <span class="string">'class'</span> : <span class="number">1</span> <span class="comment">#整列数据可以标量填充</span></span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(dic)</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'---------------行操作 查-----------------------------'</span>)</span><br><span class="line">print(df.loc[<span class="number">0</span>])</span><br><span class="line">print(df.loc[[<span class="number">0</span>,<span class="number">2</span>]]) <span class="comment"># 选择指定行</span></span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df.loc[<span class="number">0</span>,<span class="string">'name'</span>]) <span class="comment"># 选择某行某列</span></span><br><span class="line">print(df.loc[[<span class="number">0</span>,<span class="number">2</span>],<span class="string">'name'</span>])</span><br><span class="line">print(df.loc[[<span class="number">0</span>,<span class="number">2</span>],[<span class="string">'name'</span>,<span class="string">'age'</span>]])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------行操作 切片---------------------------'</span>)</span><br><span class="line">print(df.loc[<span class="number">1</span>:,<span class="string">'name'</span>:<span class="string">'class'</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------数字索引方式获取-----------------------'</span>)</span><br><span class="line">print(df.iloc[<span class="number">0</span>])</span><br><span class="line">print(df.iloc[[<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>       name  age  class
+0       joe   18      1
+1      anne   19      1
+2  yilianna   20      1
+---------------行操作 查-----------------------------
+name     joe
+age       18
+class      1
+Name: 0, dtype: object
+       name  age  class
+0       joe   18      1
+2  yilianna   20      1
+--------------------
+joe
+0         joe
+2    yilianna
+Name: name, dtype: object
+       name  age
+0       joe   18
+2  yilianna   20
+---------------行操作 切片---------------------------
+       name  age  class
+1      anne   19      1
+2  yilianna   20      1
+---------------数字索引方式获取-----------------------
+name     joe
+age       18
+class      1
+Name: 0, dtype: object
+   name  age
+0   joe   18
+1  anne   19
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">'name'</span>:[<span class="string">'joe'</span>,<span class="string">'anne'</span>,<span class="string">'yilianna'</span>],</span><br><span class="line">    <span class="string">'age'</span> : [<span class="number">18</span>,<span class="number">19</span>,<span class="number">20</span>],</span><br><span class="line">    <span class="string">'class'</span> : <span class="number">1</span> <span class="comment">#整列数据可以标量填充</span></span><br><span class="line">&#125;</span><br><span class="line">df = pd.DataFrame(dic)</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'---------------行操作 增-----------------------'</span>)</span><br><span class="line">df.loc[<span class="string">'3'</span>] = [<span class="string">'ronaldo'</span>,<span class="number">16</span>,<span class="number">1</span>]</span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------行操作 删-----------------------'</span>)</span><br><span class="line">df = df.drop(<span class="string">'3'</span>)</span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------行操作 改-----------------------'</span>)</span><br><span class="line">df.loc[<span class="number">2</span>] = [<span class="string">'messi'</span>,<span class="number">19</span>,<span class="number">9</span>]</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>       name  age  class
+0       joe   18      1
+1      anne   19      1
+2  yilianna   20      1
+---------------行操作 增-----------------------
+       name  age  class
+0       joe   18      1
+1      anne   19      1
+2  yilianna   20      1
+3   ronaldo   16      1
+---------------行操作 删-----------------------
+       name  age  class
+0       joe   18      1
+1      anne   19      1
+2  yilianna   20      1
+---------------行操作 改-----------------------
+    name  age  class
+0    joe   18      1
+1   anne   19      1
+2  messi   19      9
+</code></pre><p><br><br><br><br><br></p>
+<h1 id="Pandas基本功能"><a href="#Pandas基本功能" class="headerlink" title="Pandas基本功能"></a>Pandas基本功能</h1><h2 id="数据文件读取-文本数据读取与文本存储"><a href="#数据文件读取-文本数据读取与文本存储" class="headerlink" title="数据文件读取/文本数据读取与文本存储"></a>数据文件读取/文本数据读取与文本存储</h2><h3 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">'data1.csv'</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<h3 id="读取文本文件"><a href="#读取文本文件" class="headerlink" title="读取文本文件"></a>读取文本文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">'data1.txt'</span>,sep = <span class="string">'::'</span>,engine = <span class="string">'python'</span>) <span class="comment">#这边需要自定义分割符</span></span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<h3 id="读取Excel文件"><a href="#读取Excel文件" class="headerlink" title="读取Excel文件"></a>读取Excel文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_excel(<span class="string">'data1.xlsx'</span>)</span><br><span class="line">data</span><br><span class="line">``` </span><br><span class="line"><span class="comment">### 存储文件</span></span><br><span class="line">```python</span><br><span class="line">data.to_csv(<span class="string">'football.csv'</span>,index = <span class="keyword">False</span>) <span class="comment"># 这里的index需要列入 不然会多一列数据</span></span><br></pre></td></tr></table></figure>
+<h2 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,(<span class="number">4</span>,<span class="number">4</span>)),index = list(<span class="string">'ABCD'</span>),columns = list(<span class="string">'abcd'</span>))</span><br><span class="line">df.loc[<span class="string">'B'</span>,<span class="string">'c'</span>] = np.NaN</span><br><span class="line">df.loc[<span class="string">'C'</span>,<span class="string">'b'</span>] = np.NaN</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'---------------判断是否残缺数据-----------------------'</span>)</span><br><span class="line">print(df[:].isnull())</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------删除带有NaN的行数据--------------------'</span>)</span><br><span class="line">print(df.dropna()) <span class="comment">#默认删除带有NaN的行，只要含有一个就整行删除</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------删除带有NaN的列数据--------------------'</span>)</span><br><span class="line">print(df.dropna(axis = <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------自定义删除的数据的阀值------------------'</span>)</span><br><span class="line">df.loc[<span class="string">'E'</span>] = np.NaN</span><br><span class="line">print(df)</span><br><span class="line">print(df.dropna(how = <span class="string">'all'</span>)) <span class="comment"># 只是删除整行为nan的数据</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------filla处理----------------------------'</span>)</span><br><span class="line">df.loc[<span class="string">'E'</span>] = np.NaN</span><br><span class="line">df = df.fillna(<span class="number">0</span>) <span class="comment"># 将整行NaN数据替换为0</span></span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------根据前一个值替换-----------------------'</span>)</span><br><span class="line">df.loc[<span class="string">'B'</span>,<span class="string">'c'</span>] = np.NaN</span><br><span class="line">df.loc[<span class="string">'C'</span>,<span class="string">'b'</span>] = np.NaN</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">df = df.fillna(method = <span class="string">'ffill'</span>) </span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------根据后一个值替换-----------------------'</span>)</span><br><span class="line">df.loc[<span class="string">'B'</span>,<span class="string">'c'</span>] = np.NaN</span><br><span class="line">df.loc[<span class="string">'C'</span>,<span class="string">'b'</span>] = np.NaN</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">df = df.fillna(method = <span class="string">'bfill'</span>) </span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------根据列进行替换------------------------'</span>)</span><br><span class="line">df.loc[<span class="string">'B'</span>,<span class="string">'c'</span>] = np.NaN</span><br><span class="line">df.loc[<span class="string">'C'</span>,<span class="string">'b'</span>] = np.NaN</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">df = df01.fillna(&#123;<span class="string">'b'</span>:<span class="number">100</span>,<span class="string">'c'</span>:<span class="number">200</span>&#125;)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+<pre><code>   a    b    c  d
+A  6  3.0  2.0  3
+B  1  8.0  NaN  2
+C  8  NaN  6.0  8
+D  7  7.0  1.0  6
+---------------判断是否残缺数据-----------------------
+    a      b      c      d
+A  False  False  False  False
+B  False  False   True  False
+C  False   True  False  False
+D  False  False  False  False
+---------------删除带有NaN的行数据--------------------
+   a    b    c  d
+A  6  3.0  2.0  3
+D  7  7.0  1.0  6
+---------------删除带有NaN的列数据--------------------
+a  d
+A  6  3
+B  1  2
+C  8  8
+D  7  6
+---------------自定义删除的数据的阀值------------------
+    a    b    c    d
+A  6.0  3.0  2.0  3.0
+B  1.0  8.0  NaN  2.0
+C  8.0  NaN  6.0  8.0
+D  7.0  7.0  1.0  6.0
+E  NaN  NaN  NaN  NaN
+    a    b    c    d
+A  6.0  3.0  2.0  3.0
+B  1.0  8.0  NaN  2.0
+C  8.0  NaN  6.0  8.0
+D  7.0  7.0  1.0  6.0
+---------------filla处理----------------------------
+    a    b    c    d
+A  6.0  3.0  2.0  3.0
+B  1.0  8.0  0.0  2.0
+C  8.0  0.0  6.0  8.0
+D  7.0  7.0  1.0  6.0
+E  0.0  0.0  0.0  0.0
+---------------根据前一个值替换-----------------------
+    a    b    c    d
+A  6.0  3.0  2.0  3.0
+B  1.0  8.0  NaN  2.0
+C  8.0  NaN  6.0  8.0
+D  7.0  7.0  1.0  6.0
+E  0.0  0.0  0.0  0.0
+--------------------
+    a    b    c    d
+A  6.0  3.0  2.0  3.0
+B  1.0  8.0  2.0  2.0
+C  8.0  8.0  6.0  8.0
+D  7.0  7.0  1.0  6.0
+E  0.0  0.0  0.0  0.0
+---------------根据后一个值替换-----------------------
+    a    b    c    d
+A  6.0  3.0  2.0  3.0
+B  1.0  8.0  NaN  2.0
+C  8.0  NaN  6.0  8.0
+D  7.0  7.0  1.0  6.0
+E  0.0  0.0  0.0  0.0
+--------------------
+    a    b    c    d
+A  6.0  3.0  2.0  3.0
+B  1.0  8.0  6.0  2.0
+C  8.0  7.0  6.0  8.0
+D  7.0  7.0  1.0  6.0
+E  0.0  0.0  0.0  0.0
+---------------根据列进行替换------------------------
+    a    b    c    d
+A  6.0  3.0  2.0  3.0
+B  1.0  8.0  NaN  2.0
+C  8.0  NaN  6.0  8.0
+D  7.0  7.0  1.0  6.0
+E  0.0  0.0  0.0  0.0
+--------------------
+   a      b      c  d
+A  6    6.0    8.0  1
+B  1    2.0  200.0  2
+C  1  100.0    7.0  1
+D  6    7.0    2.0  5
+</code></pre><h2 id="常用统计函数"><a href="#常用统计函数" class="headerlink" title="常用统计函数"></a>常用统计函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,(<span class="number">4</span>,<span class="number">4</span>)),index = list(<span class="string">'ABCD'</span>),columns = list(<span class="string">'abcd'</span>))</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'---------------count函数------------------------'</span>)</span><br><span class="line">print(df.count()) <span class="comment">#统计非nan的数值</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------describe函数---------------------'</span>)</span><br><span class="line">print(df.describe())</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------min函数--------------------------'</span>)</span><br><span class="line">print(df.min())</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------idmin函数------------------------'</span>)</span><br><span class="line">print(df.idxmin()) <span class="comment">#最小的在那一行</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------sum函数--------------------------'</span>)</span><br><span class="line">print(df.sum())</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------mad函数--------------------------'</span>)</span><br><span class="line">print(df.mad()) <span class="comment">#根据平均值计算平均绝对距离差</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------cumsum函数-----------------------'</span>)</span><br><span class="line">print(df.cumsum())</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------pct_change函数-------------------'</span>)</span><br><span class="line">print(df.pct_change()) <span class="comment"># 计算百分比函数</span></span><br></pre></td></tr></table></figure>
+<pre><code>   a  b  c  d
+A  4  3  3  4
+B  5  7  3  8
+C  4  8  7  5
+D  4  6  1  4
+---------------count函数------------------------
+a    4
+b    4
+c    4
+d    4
+dtype: int64
+---------------describe函数---------------------
+        a         b         c         d
+count  4.00  4.000000  4.000000  4.000000
+mean   4.25  6.000000  3.500000  5.250000
+std    0.50  2.160247  2.516611  1.892969
+min    4.00  3.000000  1.000000  4.000000
+25%    4.00  5.250000  2.500000  4.000000
+50%    4.00  6.500000  3.000000  4.500000
+75%    4.25  7.250000  4.000000  5.750000
+max    5.00  8.000000  7.000000  8.000000
+---------------min函数--------------------------
+a    4
+b    3
+c    1
+d    4
+dtype: int64
+---------------idmin函数------------------------
+a    A
+b    A
+c    D
+d    A
+dtype: object
+---------------sum函数--------------------------
+a    17
+b    24
+c    14
+d    21
+dtype: int64
+---------------mad函数--------------------------
+a    0.375
+b    1.500
+c    1.750
+d    1.375
+dtype: float64
+---------------cumsum函数-----------------------
+    a   b   c   d
+A   4   3   3   4
+B   9  10   6  12
+C  13  18  13  17
+D  17  24  14  21
+---------------pct_change函数-------------------
+    a         b         c      d
+A   NaN       NaN       NaN    NaN
+B  0.25  1.333333  0.000000  1.000
+C -0.20  0.142857  1.333333 -0.375
+D  0.00 -0.250000 -0.857143 -0.200
+</code></pre><h2 id="相关系数和协方差"><a href="#相关系数和协方差" class="headerlink" title="相关系数和协方差"></a>相关系数和协方差</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果协方差为正,说明X,Y同向变化,协方差越大说明同向程度越高;如果协方差</span></span><br><span class="line"><span class="comment"># 为负,说明X,Y反向运动,协方差越小说明反向程度越高。</span></span><br><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'kill'</span> : [<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>],</span><br><span class="line">    <span class="string">'duanwei'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]   </span><br><span class="line">&#125;)</span><br><span class="line">df[<span class="string">'kill'</span>].cov(df[<span class="string">'duanwei'</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>1.6666666666666665
+</code></pre><h2 id="唯一值，值计数，成员资格"><a href="#唯一值，值计数，成员资格" class="headerlink" title="唯一值，值计数，成员资格"></a>唯一值，值计数，成员资格</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>),index = list(<span class="string">'abcedf'</span>))</span><br><span class="line">print(ser)</span><br><span class="line">print(<span class="string">'---------------唯一值---------------------------'</span>)</span><br><span class="line">print(ser.unique()) <span class="comment">#唯一值</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------各个值出现的次数-------------------'</span>)</span><br><span class="line">print(ser.value_counts())</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------某个值是否出现---------------------'</span>)</span><br><span class="line">print(ser.isin([<span class="number">2</span>,<span class="number">3</span>]))</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------某个索引是否出现-------------------'</span>)</span><br><span class="line">print(ser.index.isin([<span class="string">'a'</span>]))</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------一些应用--------------------------'</span>)</span><br><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'movie_name'</span> : list(<span class="string">'abadcebe'</span>),</span><br><span class="line">    <span class="string">'rating'</span> : [<span class="number">4</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>]</span><br><span class="line">&#125;)</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df[<span class="string">'movie_name'</span>].unique())</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df[<span class="string">'movie_name'</span>].value_counts().head(<span class="number">3</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df[<span class="string">'movie_name'</span>].isin([<span class="string">'a'</span>,<span class="string">'b'</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>a    1
+b    2
+c    1
+e    2
+d    3
+f    2
+dtype: int64
+---------------唯一值---------------------------
+[1 2 3]
+---------------各个值出现的次数-------------------
+2    3
+1    2
+3    1
+dtype: int64
+---------------某个值是否出现---------------------
+a    False
+b     True
+c    False
+e     True
+d     True
+f     True
+dtype: bool
+---------------某个索引是否出现-------------------
+[ True False False False False False]
+---------------一些应用--------------------------
+movie_name  rating
+0          a       4
+1          b       5
+2          a       3
+3          d       5
+4          c       3
+5          e       4
+6          b       3
+7          e       5
+--------------------
+[&#39;a&#39; &#39;b&#39; &#39;d&#39; &#39;c&#39; &#39;e&#39;]
+--------------------
+a    2
+b    2
+e    2
+Name: movie_name, dtype: int64
+--------------------
+0     True
+1     True
+2     True
+3    False
+4    False
+5    False
+6     True
+7    False
+Name: movie_name, dtype: bool
+</code></pre><h2 id="层次索引"><a href="#层次索引" class="headerlink" title="层次索引"></a>层次索引</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">30</span>,<span class="number">33</span>,<span class="number">35</span>,<span class="number">18</span>,<span class="number">20</span>,<span class="number">30</span>],index = [</span><br><span class="line">    [<span class="number">2017</span>,<span class="number">2017</span>,<span class="number">2017</span>,<span class="number">2018</span>,<span class="number">2018</span>,<span class="number">2018</span>],</span><br><span class="line">    [<span class="string">'messi'</span>,<span class="string">'cr7'</span>,<span class="string">'nermaer'</span>,<span class="string">'messi'</span>,<span class="string">'cr7'</span>,<span class="string">'nermaer'</span>]</span><br><span class="line">])</span><br><span class="line">print(ser)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------索引--------------------------'</span>)</span><br><span class="line">print(ser[<span class="number">2017</span>][<span class="string">'messi'</span>])</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(ser[:,<span class="string">'messi'</span>])</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------交换层次-----------------------'</span>)</span><br><span class="line">ser = ser.swaplevel().sort_index()</span><br><span class="line">print(ser)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------转换为DataFrame---------------'</span>)</span><br><span class="line">ser = ser.unstack(level = <span class="number">1</span>)</span><br><span class="line">print(ser)</span><br></pre></td></tr></table></figure>
+<pre><code>2017  messi      30
+      cr7        33
+      nermaer    35
+2018  messi      18
+      cr7        20
+      nermaer    30
+dtype: int64
+---------------索引--------------------------
+30
+--------------------
+2017    30
+2018    18
+dtype: int64
+---------------交换层次-----------------------
+cr7      2017    33
+         2018    20
+messi    2017    30
+         2018    18
+nermaer  2017    35
+         2018    30
+dtype: int64
+---------------转换为DataFrame---------------
+        2017  2018
+cr7       33    20
+messi     30    18
+nermaer   35    30
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">    dataframe</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'year'</span> : [<span class="number">2017</span>,<span class="number">2017</span>,<span class="number">2017</span>,<span class="number">2018</span>,<span class="number">2018</span>,<span class="number">2018</span>],</span><br><span class="line">    <span class="string">'goal'</span> : [<span class="number">30</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">28</span>,<span class="number">29</span>,<span class="number">30</span>],</span><br><span class="line">    <span class="string">'name'</span> : [<span class="string">'messi'</span>,<span class="string">'cr7'</span>,<span class="string">'nermaer'</span>,<span class="string">'messi'</span>,<span class="string">'cr7'</span>,<span class="string">'nermaer'</span>]</span><br><span class="line">&#125;)</span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------set_index函数---------------'</span>)</span><br><span class="line">df = df.set_index([<span class="string">'year'</span>,<span class="string">'name'</span>])</span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------索引------------------------'</span>)  </span><br><span class="line">print(df.loc[<span class="number">2017</span>,<span class="string">'messi'</span>])</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df.loc[<span class="number">2017</span>])</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------unstack/stack函数-----------'</span>)</span><br><span class="line">print(df.unstack())</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df.stack())</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------求和函数---------------------'</span>)</span><br><span class="line">print(df.sum(level = <span class="string">'year'</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df.sum(level = <span class="string">'name'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>   year  goal     name
+0  2017    30    messi
+1  2017    30      cr7
+2  2017    31  nermaer
+3  2018    28    messi
+4  2018    29      cr7
+5  2018    30  nermaer
+---------------set_index函数---------------
+              goal
+year name         
+2017 messi      30
+     cr7        30
+     nermaer    31
+2018 messi      28
+     cr7        29
+     nermaer    30
+---------------索引------------------------
+goal    30
+Name: (2017, messi), dtype: int64
+--------------------
+        goal
+name         
+messi      30
+cr7        30
+nermaer    31
+---------------unstack/stack函数-----------
+    goal              
+name  cr7 messi nermaer
+year                   
+2017   30    30      31
+2018   29    28      30
+--------------------
+year  name         
+2017  messi    goal    30
+      cr7      goal    30
+      nermaer  goal    31
+2018  messi    goal    28
+      cr7      goal    29
+      nermaer  goal    30
+dtype: int64
+---------------求和函数---------------------
+    goal
+year      
+2017    91
+2018    87
+--------------------
+        goal
+name         
+messi      58
+cr7        59
+nermaer    61
+</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="sort-index-sort-values排序"><a href="#sort-index-sort-values排序" class="headerlink" title="sort_index/sort_values排序"></a>sort_index/sort_values排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],index = list(<span class="string">'bdcae'</span>))</span><br><span class="line">df = pd.DataFrame(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,(<span class="number">4</span>,<span class="number">4</span>)),index = list(<span class="string">'BDCA'</span>),columns = list(<span class="string">'cadb'</span>))</span><br><span class="line">print(ser)</span><br><span class="line">print(<span class="string">'---------------sort_index排序---------------------'</span>)</span><br><span class="line">print(ser.sort_index(ascending = <span class="keyword">True</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df.sort_index(axis = <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------sort_values排序--------------------'</span>)</span><br><span class="line">print(ser.sort_values(ascending = <span class="keyword">False</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df.sort_values(by = <span class="string">'c'</span>,ascending = <span class="keyword">False</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>b    1
+d    2
+c    3
+a    4
+e    5
+dtype: int64
+---------------sort_index排序---------------------
+a    4
+b    1
+c    3
+d    2
+e    5
+dtype: int64
+--------------------
+   a  b  c  d
+B  1  6  8  8
+D  7  7  5  3
+C  7  7  6  5
+A  7  4  4  2
+---------------sort_values排序--------------------
+e    5
+a    4
+c    3
+d    2
+b    1
+dtype: int64
+--------------------
+   c  a  d  b
+B  8  1  8  6
+C  6  7  5  7
+D  5  7  3  7
+A  4  7  2  4
+</code></pre><h3 id="rank排序"><a href="#rank排序" class="headerlink" title="rank排序"></a>rank排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>],index = list(<span class="string">'bdcae'</span>))</span><br><span class="line">df = pd.DataFrame(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,(<span class="number">4</span>,<span class="number">4</span>)),index = list(<span class="string">'BDCA'</span>),columns = list(<span class="string">'cadb'</span>))</span><br><span class="line">print(ser)</span><br><span class="line">print(<span class="string">'---------------rank排序---------------------'</span>)</span><br><span class="line">print(ser.rank())</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(ser.rank(method = <span class="string">'min'</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(ser.rank(method = <span class="string">'max'</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(ser.rank(method = <span class="string">'first'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>b    4
+d    5
+c    2
+a    2
+e    1
+dtype: int64
+---------------rank排序---------------------
+b    4.0
+d    5.0
+c    2.5
+a    2.5
+e    1.0
+dtype: float64
+--------------------
+b    4.0
+d    5.0
+c    2.0
+a    2.0
+e    1.0
+dtype: float64
+--------------------
+b    4.0
+d    5.0
+c    3.0
+a    3.0
+e    1.0
+dtype: float64
+--------------------
+b    4.0
+d    5.0
+c    2.0
+a    3.0
+e    1.0
+dtype: float64
+</code></pre><h2 id="时间序列"><a href="#时间序列" class="headerlink" title="时间序列"></a>时间序列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(pd.date_range(start = <span class="string">'20180701'</span>,end = <span class="string">'20180708'</span>,freq = <span class="string">'2d'</span>)) <span class="comment"># freq默认为一天</span></span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">50</span>)</span><br><span class="line">print(pd.date_range(start = <span class="string">'20180701'</span>,periods = <span class="number">10</span>, freq = <span class="string">'10min'</span>)) <span class="comment"># 设定显示条数</span></span><br></pre></td></tr></table></figure>
+<pre><code>DatetimeIndex([&#39;2018-07-01&#39;, &#39;2018-07-03&#39;, &#39;2018-07-05&#39;, &#39;2018-07-07&#39;], dtype=&#39;datetime64[ns]&#39;, freq=&#39;2D&#39;)
+--------------------------------------------------
+DatetimeIndex([&#39;2018-07-01 00:00:00&#39;, &#39;2018-07-01 00:10:00&#39;,
+            &#39;2018-07-01 00:20:00&#39;, &#39;2018-07-01 00:30:00&#39;,
+            &#39;2018-07-01 00:40:00&#39;, &#39;2018-07-01 00:50:00&#39;,
+            &#39;2018-07-01 01:00:00&#39;, &#39;2018-07-01 01:10:00&#39;,
+            &#39;2018-07-01 01:20:00&#39;, &#39;2018-07-01 01:30:00&#39;],
+            dtype=&#39;datetime64[ns]&#39;, freq=&#39;10T&#39;)
+</code></pre><h2 id="数据合并"><a href="#数据合并" class="headerlink" title="数据合并"></a>数据合并</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df01 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data1'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'key'</span>  : list(<span class="string">'abcde'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">df02 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data2'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'key'</span> : list(<span class="string">'abcde'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">print(df01)</span><br><span class="line">print(df02)</span><br><span class="line">print(<span class="string">'---------------merge合并---------------------'</span>)</span><br><span class="line">print(pd.merge(df01,df02,on = <span class="string">'key'</span>,how = <span class="string">'inner'</span>)) <span class="comment"># inner的意思是说相同的key进行整和</span></span><br></pre></td></tr></table></figure>
+<pre><code>   data1 key
+0      1   a
+1      2   b
+2      3   c
+3      4   d
+4      5   e
+   data2 key
+0      1   a
+1      2   b
+2      3   c
+3      4   d
+4      5   e
+---------------merge合并---------------------
+   data1 key  data2
+0      1   a      1
+1      2   b      2
+2      3   c      3
+3      4   d      4
+4      5   e      5
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">df01 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data1'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'key'</span>  : list(<span class="string">'abcde'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">df02 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data2'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'key'</span> : list(<span class="string">'abcfg'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">print(df01)</span><br><span class="line">print(df02)</span><br><span class="line">print(<span class="string">'---------------merge合并---------------------'</span>)</span><br><span class="line">print(pd.merge(df01,df02,on = <span class="string">'key'</span>,how = <span class="string">'inner'</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">print(pd.merge(df01,df02,on = <span class="string">'key'</span>,how = <span class="string">'left'</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">print(pd.merge(df01,df02,on = <span class="string">'key'</span>,how = <span class="string">'right'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>   data1 key
+0      1   a
+1      2   b
+2      3   c
+3      4   d
+4      5   e
+   data2 key
+0      1   a
+1      2   b
+2      3   c
+3      4   f
+4      5   g
+---------------merge合并---------------------
+   data1 key  data2
+0      1   a      1
+1      2   b      2
+2      3   c      3
+--------------------
+   data1 key  data2
+0      1   a    1.0
+1      2   b    2.0
+2      3   c    3.0
+3      4   d    NaN
+4      5   e    NaN
+--------------------
+   data1 key  data2
+0    1.0   a      1
+1    2.0   b      2
+2    3.0   c      3
+3    NaN   f      4
+4    NaN   g      5
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">df01 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data1'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'key1'</span>  : list(<span class="string">'abcde'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">df02 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data2'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'key2'</span> : list(<span class="string">'abcfg'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">print(df01)</span><br><span class="line">print(df02)</span><br><span class="line">print(<span class="string">'---------------merge合并---------------------'</span>)</span><br><span class="line">print(pd.merge(df01,df02,left_on = <span class="string">'key1'</span>,right_on = <span class="string">'key2'</span>,how = <span class="string">'inner'</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">print(pd.merge(df01,df02,left_on = <span class="string">'key1'</span>,right_on = <span class="string">'key2'</span>,how = <span class="string">'left'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>   data1 key1
+0      1    a
+1      2    b
+2      3    c
+3      4    d
+4      5    e
+   data2 key2
+0      1    a
+1      2    b
+2      3    c
+3      4    f
+4      5    g
+---------------merge合并---------------------
+   data1 key1  data2 key2
+0      1    a      1    a
+1      2    b      2    b
+2      3    c      3    c
+--------------------
+   data1 key1  data2 key2
+0      1    a    1.0    a
+1      2    b    2.0    b
+2      3    c    3.0    c
+3      4    d    NaN  NaN
+4      5    e    NaN  NaN
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">df01 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data1'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'key'</span>  : list(<span class="string">'abcde'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">df02 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data2'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'key'</span> : list(<span class="string">'abcfg'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">print(df01)</span><br><span class="line">print(df02)</span><br><span class="line">print(<span class="string">'---------------contact合并---------------------'</span>)</span><br><span class="line">print(pd.concat([df01,df02],join = <span class="string">'outer'</span>)) <span class="comment">#纵向合并</span></span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(pd.concat([df01,df02],axis = <span class="number">1</span>,join = <span class="string">'outer'</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>   data1 key
+0      1   a
+1      2   b
+2      3   c
+3      4   d
+4      5   e
+   data2 key
+0      1   a
+1      2   b
+2      3   c
+3      4   f
+4      5   g
+---------------contact合并---------------------
+   data1  data2 key
+0    1.0    NaN   a
+1    2.0    NaN   b
+2    3.0    NaN   c
+3    4.0    NaN   d
+4    5.0    NaN   e
+0    NaN    1.0   a
+1    NaN    2.0   b
+2    NaN    3.0   c
+3    NaN    4.0   f
+4    NaN    5.0   g
+--------------------
+   data1 key  data2 key
+0      1   a      1   a
+1      2   b      2   b
+2      3   c      3   c
+3      4   d      4   f
+4      5   e      5   g
+</code></pre><h2 id="分组聚合"><a href="#分组聚合" class="headerlink" title="分组聚合"></a>分组聚合</h2><p>分组聚合是分组+聚合，即先分组，分完组后再聚合<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">'data1'</span> : [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    <span class="string">'data2'</span> : [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>],</span><br><span class="line">    <span class="string">'key1'</span> : list(<span class="string">'aabba'</span>),</span><br><span class="line">    <span class="string">'sex'</span>  : list(<span class="string">'mwmwm'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">print(df)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'---------------分组并查看其内容---------------------'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> df.groupby(<span class="string">'key1'</span>):</span><br><span class="line">    print(i)</span><br><span class="line">    </span><br><span class="line">print(<span class="string">'---------------聚合函数----------------------------'</span>)</span><br><span class="line">print(df.groupby(<span class="string">'key1'</span>)[<span class="string">'data1'</span>].mean())</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df.groupby(<span class="string">'key1'</span>)[<span class="string">'data1'</span>].max())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">'--------------apply函数---------------------------'</span>)</span><br><span class="line">print(df.groupby([<span class="string">'key1'</span>,<span class="string">'sex'</span>])[<span class="string">'data1'</span>].apply(<span class="keyword">lambda</span> x: x+ <span class="number">10</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line">print(df.groupby([<span class="string">'key1'</span>,<span class="string">'sex'</span>])[<span class="string">'data1'</span>].apply(<span class="keyword">lambda</span> x: x.max()))</span><br><span class="line"></span><br><span class="line">print(<span class="string">'--------------apply函数应用示例---------------------'</span>)</span><br><span class="line">df = pd.DataFrame(np.random.randint(<span class="number">1</span>,<span class="number">9</span>,(<span class="number">4</span>,<span class="number">4</span>)), index = list(<span class="string">'ABCD'</span>),columns = list(<span class="string">'abcd'</span>))</span><br><span class="line">print(df)</span><br><span class="line">print(df.apply(<span class="keyword">lambda</span> x:x + <span class="number">10</span>))</span><br><span class="line">print(<span class="string">'-'</span>*<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x * <span class="number">10</span></span><br><span class="line"></span><br><span class="line">print(df.apply(f1))</span><br></pre></td></tr></table></figure></p>
+<pre><code>   data1  data2 key1 sex
+0      1     10    a   m
+1      2     20    a   w
+2      3     30    b   m
+3      4     40    b   w
+4      5     50    a   m
+---------------分组并查看其内容---------------------
+(&#39;a&#39;,    data1  data2 key1 sex
+0      1     10    a   m
+1      2     20    a   w
+4      5     50    a   m)
+(&#39;b&#39;,    data1  data2 key1 sex
+2      3     30    b   m
+3      4     40    b   w)
+---------------聚合函数----------------------------
+key1
+a    2.666667
+b    3.500000
+Name: data1, dtype: float64
+--------------------
+key1
+a    5
+b    4
+Name: data1, dtype: int64
+--------------apply函数---------------------------
+0    11
+1    12
+2    13
+3    14
+4    15
+Name: data1, dtype: int64
+--------------------
+key1  sex
+a     m      5
+      w      2
+b     m      3
+      w      4
+Name: data1, dtype: int64
+--------------apply函数应用示例---------------------
+a  b  c  d
+A  3  1  2  8
+B  6  1  6  1
+C  8  8  2  8
+D  7  2  2  4
+    a   b   c   d
+A  13  11  12  18
+B  16  11  16  11
+C  18  18  12  18
+D  17  12  12  14
+--------------------
+    a   b   c   d
+A  30  10  20  80
+B  60  10  60  10
+C  80  80  20  80
+D  70  20  20  40
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的浏览，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechatpay.jpg" alt="Leiy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay.jpg" alt="Leiy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Pandas/" rel="tag"># Pandas</a>
+          
+        </div>
+      
+
+	<div>
+	      
+		
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/03/13/pandas/">Pandas总结</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Leiy 的个人博客">Leiy</a></p>
+  <p><span>发布时间:</span>2019年03月13日 - 12:03</p>
+  <p><span>最后更新:</span>2018年08月24日 - 10:08</p>
+  <p><span>原始链接:</span><a href="/2019/03/13/pandas/" title="Pandas总结">http://leiy.live/2019/03/13/pandas/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://leiy.live/2019/03/13/pandas/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+	      
+	</div>
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/13/Python总结(1)/" rel="next" title="Python入门之基本语法和数据类型">
+                <i class="fa fa-chevron-left"></i> Python入门之基本语法和数据类型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/13/Python总结(2)/" rel="prev" title="Python入门之字符串处理">
+                Python入门之字符串处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Leiy" />
+            
+              <p class="site-author-name" itemprop="name">Leiy</p>
+              <p class="site-description motion-element" itemprop="description">医学影像与深度学习交叉领域萌新一枚</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Belye" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:belye1024@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.mipav.net/" title="MIPAV" target="_blank">MIPAV</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas基本数据结构"><span class="nav-number">1.</span> <span class="nav-text">Pandas基本数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Series基本概述"><span class="nav-number">2.</span> <span class="nav-text">Series基本概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Series创建"><span class="nav-number">2.1.</span> <span class="nav-text">Series创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用列表创建Series"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用列表创建Series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用数组创建"><span class="nav-number">2.1.2.</span> <span class="nav-text">使用数组创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用字典创建"><span class="nav-number">2.1.3.</span> <span class="nav-text">使用字典创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Series的index和value"><span class="nav-number">2.2.</span> <span class="nav-text">Series的index和value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改和指定index"><span class="nav-number">2.3.</span> <span class="nav-text">修改和指定index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见属性"><span class="nav-number">2.4.</span> <span class="nav-text">常见属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引与切片"><span class="nav-number">2.5.</span> <span class="nav-text">索引与切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Series运算"><span class="nav-number">2.6.</span> <span class="nav-text">Series运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Series自动对齐、缺失值过滤"><span class="nav-number">2.7.</span> <span class="nav-text">Series自动对齐、缺失值过滤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DataFrame概述"><span class="nav-number">3.</span> <span class="nav-text">DataFrame概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DataFrame创建-amp-重置索引"><span class="nav-number">3.1.</span> <span class="nav-text">DataFrame创建 &amp; 重置索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用列表创建"><span class="nav-number">3.1.1.</span> <span class="nav-text">使用列表创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用series创建"><span class="nav-number">3.1.2.</span> <span class="nav-text">使用series创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用数组创建-1"><span class="nav-number">3.1.3.</span> <span class="nav-text">使用数组创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用字典创建-1"><span class="nav-number">3.1.4.</span> <span class="nav-text">使用字典创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重置索引"><span class="nav-number">3.1.5.</span> <span class="nav-text">重置索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增删改查操作"><span class="nav-number">3.2.</span> <span class="nav-text">增删改查操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增删改查列操作"><span class="nav-number">3.2.1.</span> <span class="nav-text">增删改查列操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增删改查行操作"><span class="nav-number">3.2.2.</span> <span class="nav-text">增删改查行操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas基本功能"><span class="nav-number">4.</span> <span class="nav-text">Pandas基本功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据文件读取-文本数据读取与文本存储"><span class="nav-number">4.1.</span> <span class="nav-text">数据文件读取/文本数据读取与文本存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读取csv文件"><span class="nav-number">4.1.1.</span> <span class="nav-text">读取csv文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文本文件"><span class="nav-number">4.1.2.</span> <span class="nav-text">读取文本文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取Excel文件"><span class="nav-number">4.1.3.</span> <span class="nav-text">读取Excel文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺失值处理"><span class="nav-number">4.2.</span> <span class="nav-text">缺失值处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用统计函数"><span class="nav-number">4.3.</span> <span class="nav-text">常用统计函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关系数和协方差"><span class="nav-number">4.4.</span> <span class="nav-text">相关系数和协方差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#唯一值，值计数，成员资格"><span class="nav-number">4.5.</span> <span class="nav-text">唯一值，值计数，成员资格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次索引"><span class="nav-number">4.6.</span> <span class="nav-text">层次索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">4.7.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort-index-sort-values排序"><span class="nav-number">4.7.1.</span> <span class="nav-text">sort_index/sort_values排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rank排序"><span class="nav-number">4.7.2.</span> <span class="nav-text">rank排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列"><span class="nav-number">4.8.</span> <span class="nav-text">时间序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据合并"><span class="nav-number">4.9.</span> <span class="nav-text">数据合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组聚合"><span class="nav-number">4.10.</span> <span class="nav-text">分组聚合</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leiy</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span 
+id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://lei.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://leiy.live/2019/03/13/pandas/';
+          this.page.identifier = '2019/03/13/pandas/';
+          this.page.title = 'Pandas总结';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://lei.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("S3z3SCWvgw4kqNMCbEzSzyuH-gzGzoHsz", "6vQzQv1q1sRNAPiithNhLoKs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
