@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leiy.live/"/>
-  <updated>2019-03-13T12:08:16.410Z</updated>
+  <updated>2019-03-13T12:27:43.430Z</updated>
   <id>http://leiy.live/</id>
   
   <author>
@@ -17,24 +17,26 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>test</title>
     <link href="http://leiy.live/2019/03/13/test/"/>
     <id>http://leiy.live/2019/03/13/test/</id>
     <published>2019-03-13T12:07:52.706Z</published>
-    <updated>2019-03-13T12:08:16.410Z</updated>
+    <updated>2019-03-13T12:27:43.430Z</updated>
     
-    <content type="html"><![CDATA[<p>title: Annie主題使用說明<br>date: 2018-08-27 20:16:19<br>cover: /img/post-cover/74.jpg<br>categories: HEXO博客<br>tags: 說明</p>]]></content>
+    <content type="html"><![CDATA[<p>你好啊</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;title: Annie主題使用說明&lt;br&gt;date: 2018-08-27 20:16:19&lt;br&gt;cover: /img/post-cover/74.jpg&lt;br&gt;categories: HEXO博客&lt;br&gt;tags: 說明&lt;/p&gt;
+        &lt;p&gt;你好啊&lt;/p&gt;
 
       
     
     </summary>
     
+    
+      <category term="test" scheme="http://leiy.live/tags/test/"/>
     
   </entry>
   

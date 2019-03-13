@@ -1666,7 +1666,7 @@ D  70  20  20  40
 </code></pre>	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/2.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -1718,7 +1718,7 @@ print(np.array...
 					</div>
 
 					<a href="/2019/03/13/numpy/" title="NumPy总结">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="NumPy总结">
+						<img src="/img/2.jpg" class="relateImg" alt="NumPy总结">
 					</a>
 				</li>											
 		
@@ -1739,24 +1739,24 @@ x = np...
 					</div>
 
 					<a href="/2019/03/13/matplotlib/" title="Matplotlib总结">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="Matplotlib总结">
+						<img src="/img/2.jpg" class="relateImg" alt="Matplotlib总结">
 					</a>
 				</li>											
 		
 		
 				<li>
 					<div>
-						<a href="/2019/03/13/test/" title="">
-							
+						<a href="/2019/03/13/test/" title="test">
+							test
 						</a>
 						<p>
-							title: Annie主題使用說明date: 2018-08-27 20:16:19cover: /img/post-cover/74.jpgcategories: HEXO博客tags: 說明
+							你好啊
 
 						</p>
 					</div>
 
-					<a href="/2019/03/13/test/" title="">				
-						<img src="/img/cart_cover.jpg" class="relateImg">
+					<a href="/2019/03/13/test/" title="test">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="test">
 					</a>
 				</li>											
 		
@@ -1777,7 +1777,7 @@ print(a + b)  # a,b都是按照字符串形式...
 					</div>
 
 					<a href="/2019/03/13/Python总结(2)/" title="Python入门之字符串处理">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="Python入门之字符串处理">
+						<img src="/img/2.jpg" class="relateImg" alt="Python入门之字符串处理">
 					</a>
 				</li>											
 		
@@ -1800,7 +1800,7 @@ print(a + b)  # a,b都是按照字符串形式...
 					</div>
 
 					<a href="/2019/03/13/Python总结(1)/" title="Python入门之基本语法和数据类型">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="Python入门之基本语法和数据类型">
+						<img src="/img/2.jpg" class="relateImg" alt="Python入门之基本语法和数据类型">
 					</a>
 				</li>											
 		
@@ -1817,7 +1817,7 @@ print(a + b)  # a,b都是按照字符串形式...
 					</div>
 
 					<a href="/2019/03/13/Markdown(2)/" title="Markdown语法之公式编辑">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="Markdown语法之公式编辑">
+						<img src="/img/2.jpg" class="relateImg" alt="Markdown语法之公式编辑">
 					</a>
 				</li>											
 		
@@ -1838,7 +1838,7 @@ print(a + b)  # a,b都是按照字符串形式...
 					</div>
 
 					<a href="/2019/03/13/Markdown(1)/" title="Markdown语法之基本语法">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="Markdown语法之基本语法">
+						<img src="/img/2.jpg" class="relateImg" alt="Markdown语法之基本语法">
 					</a>
 				</li>											
 		
@@ -1867,7 +1867,7 @@ Experiental/Materials and Met...
 					</div>
 
 					<a href="/2019/03/13/live-高效阅读英文文献思维和方法/" title="高效阅读英文文献思维和方法">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="高效阅读英文文献思维和方法">
+						<img src="/img/2.jpg" class="relateImg" alt="高效阅读英文文献思维和方法">
 					</a>
 				</li>											
 		
@@ -1896,7 +1896,7 @@ Experiental/Materials and Met...
 					</div>
 
 					<a href="/2019/03/13/live-时间管理/" title="建立专属的时间管理系统">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="建立专属的时间管理系统">
+						<img src="/img/2.jpg" class="relateImg" alt="建立专属的时间管理系统">
 					</a>
 				</li>											
 		
@@ -1919,7 +1919,7 @@ Experiental/Materials and Met...
 					</div>
 
 					<a href="/2019/03/13/live-患上努力焦虑症/" title="患上[努力焦虑症]，怎么办？">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="患上[努力焦虑症]，怎么办？">
+						<img src="/img/2.jpg" class="relateImg" alt="患上[努力焦虑症]，怎么办？">
 					</a>
 				</li>											
 		
@@ -1982,6 +1982,59 @@ Experiental/Materials and Met...
 <!-- show math formula -->
 
 
+
+<script>
+	//Refer to https://xinyo.org/archives/66226, thanks xinyo!
+	function codeCopy() {
+		var copyContainerId = 'copy-nav';
+						
+		$("pre").before(" <nav class=' " + copyContainerId + " '><i class='code-language'></i></nav> ");
+		
+		$('.' + copyContainerId).append("<i class='fa fa-clipboard copy-btn' aria-hidden='true'></i>");
+		
+		$('#article-content').find('pre').each( function () {
+			var language = $(this).children('code').attr('class').substr(9);//why 9? Need to check language?
+			$(this).prev().find('.code-language').text( language );	
+		});
+				
+		//为复制按钮添加click事件
+		$('.copy-btn').on("click", function() {
+			//初始化
+			$("textarea").remove("#targetId");
+			
+			//获取对应的代码
+			var codePre = $(this).parent().next(),
+				codeText = codePre[0].textContent,
+				target = document.createElement("textarea");
+			target.style.position = "absolute";
+			target.style.left = "-9999px";
+			target.style.top = "0";
+			target.id = "targetId";
+			codePre.append(target);
+			target.textContent = codeText;
+
+			//选中textarea内的代码
+			target.focus();
+			target.setSelectionRange(0, target.value.length);
+
+			// 复制选中的内容
+			document.execCommand("copy");
+			
+			//删除添加的节点
+			$("textarea").remove("#targetId");
+			
+			var thisCopied = $(this);
+			thisCopied.addClass('copy-status');	
+			setTimeout( function() {
+				thisCopied.removeClass('copy-status');
+			}, 2000)
+		});	
+	}
+	
+	if( $('.layout-post').length )	{
+		codeCopy();
+	}
+</script>
 
 
 <!-- TODO: There seems to be a bug when you close the post gallery! -->
