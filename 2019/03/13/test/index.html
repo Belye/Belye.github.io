@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      1.2 Neural networks basics | Leiy
+       | Leiy
     
   </title>
   <meta name="author" content="Leiy">
@@ -115,7 +115,7 @@
 				<!-- Page title -->
 				<p>
 					
-						当前文章&nbsp;:&nbsp;《1.2 Neural networks basics》
+						当前文章&nbsp;:&nbsp;《》
 					
 				</p>
 				<!-- Progress bar -->
@@ -278,27 +278,23 @@
 	
 	<div class="article-title">
 		
-	<a href="/2019/03/13/deeplearning1_2/" itemprop="url">
-		1.2 Neural networks basics
-	</a>
-
 	</div>
 
 	<div class="article-meta">
 		<span>
 			
 	发布于
-	<a href="/2019/03/13/deeplearning1_2/" itemprop="url">
-		<time datetime="2019-03-13T04:30:03.267Z" itemprop="datePublished">
+	<a href="/2019/03/13/test/" itemprop="url">
+		<time datetime="2019-03-13T12:07:52.706Z" itemprop="datePublished">
 	  		2019-03-13
 	  </time>
 	</a> 
 
 	/
 	更新于
-	<a href="/2019/03/13/deeplearning1_2/" itemprop="url">
-		<time datetime="2019-03-13T04:30:03.267Z" itemprop="dateUpdated">
-	  		2018-09-24
+	<a href="/2019/03/13/test/" itemprop="url">
+		<time datetime="2019-03-13T12:07:52.706Z" itemprop="dateUpdated">
+	  		2019-03-13
 	  </time>
 	</a> 	
 
@@ -306,18 +302,12 @@
 		/
 		<span>
 			<i class="fa fa-tags"></i>
-			
-	
-		<a href="/tags/deeplearning/" class=" ">
-			deeplearning
-		</a>
-	
-		
+					
 		</span>
 		/
 		
 
-    <span class="leancloud_visitors" id="/2019/03/13/deeplearning1_2/_visitors" data-url="/2019/03/13/deeplearning1_2/" data-title="1.2 Neural networks basics">
+    <span class="leancloud_visitors" id="/2019/03/13/test/_visitors" data-url="/2019/03/13/test/" data-title="">
         热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
     </span>
@@ -326,7 +316,7 @@
 
 
 
-    <span class="leancloud_likes" id="/2019/03/13/deeplearning1_2/_likes" data-url="/2019/03/13/deeplearning1_2/" data-title="1.2 Neural networks basics" rel="unlike">
+    <span class="leancloud_likes" id="/2019/03/13/test/_likes" data-url="/2019/03/13/test/" data-title="" rel="unlike">
         喜欢
         <i class="fa fa-heart"></i>
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -335,28 +325,8 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<h1 id="什么是分类问题？"><a href="#什么是分类问题？" class="headerlink" title="什么是分类问题？"></a>什么是分类问题？</h1><blockquote>
-<p>在分类问题中，我们尝试着去预测结果是否是属于某一类(例如正确或错误),我们将这类问题称为分类问题</p>
-</blockquote>
-<h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><p>逻辑回归本质上等于在线性回归的输出端口加上一个sigmoid函数如果输出值大于0.5判断为1类如果小于0.5则判断为0类<br><img src="https://i.loli.net/2018/09/17/5b9f043aee4b0.png" alt="LogReg_kiank.png"></p>
-<h1 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h1><p>线性回归中损失函数：</p>
-<script type="math/tex; mode=display">
-    Loss\ =\ \frac{1}{2}\left( \ \hat{y} \ -y\ \right)^{2}</script><p>如果在分类问题中使用的线性回归的代价函数，我们发现最终在代价函数的优化问题上会出现许多的局部极小值，不利于对参数的优化，所以我们采用其他的代价函数</p>
-<p>损失函数：</p>
-<script type="math/tex; mode=display">
-    Loss=-\left( ylog\hat{y} \ +\ ( 1-y) log\left( 1-\hat{y}\right)\right)</script><p>代价函数：</p>
-<script type="math/tex; mode=display">
-J( w,b) \ =\ \frac{1}{m}\sum ^{m}_{i\ =\ 1} Loss\left(\hat{y} \ ,y\right)</script><p>逻辑回归代价函数直观理解：<br>在理解逻辑函数之前我们先回顾下log函数的图像</p>
-<p><img src="https://i.loli.net/2018/09/17/5b9f0fe5035ec.png" alt="f(x).png"></p>
-<p>如果实际结果 y = 1 则损失函数变为 </p>
-<p>\ Loss\left(\hat{y}  ,y\right)  = -log\hat{y} \\</p>
-<p>从log函数图像可知此时如果我们预测的结果是0(与实际结果相反)则将会付出一个接近无穷的代价相反如果我们预测的结果是1(与实际结果相同),则我们将只会付出0代价<br>类似的如果实际结果 y = 0，则代价函数变为</p>
-<p>\ Loss\left(\hat{y} ,y\right)  = -\left( log\left( 1 - \hat{y}\right)\right) \\</p>
-<p>此时如果我们预测结果为1(与实际结果相反)则会付出一个很大的代价，而如果我们预测的结果与实际相同则我们付出的代价为0即不会付出任何代价。</p>
-<h1 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h1><p>深度学习的优化问题大多使用梯度下降，或者是梯度下降的优化版本，前面我们已经知道了分类问题的代价函数，现在我们使用梯度下降来优化我们的参数</p>
-<h1 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h1>	
+		<p>title: Annie主題使用說明<br>date: 2018-08-27 20:16:19<br>cover: /img/post-cover/74.jpg<br>categories: HEXO博客<br>tags: 說明</p>
+	
 	</div>
 	
 	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
@@ -373,12 +343,8 @@ J( w,b) \ =\ \frac{1}{m}\sum ^{m}_{i\ =\ 1} Loss\left(\hat{y} \ ,y\right)</scrip
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/03/13/live-如何开展高质量英文文献调研/" title="如何开展高质量英文文献调研" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2019/03/13/deeplearning1_1/" title="1.1 Introduction to Deep Learning" rel="next">
+			<a href="/2019/03/13/Python总结(2)/" title="Python入门之字符串处理" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -393,40 +359,6 @@ J( w,b) \ =\ \frac{1}{m}\sum ^{m}_{i\ =\ 1} Loss\left(\hat{y} \ ,y\right)</scrip
 
 <div class="relate-post">
 	<ul>
-		
-				<li>
-					<div>
-						<a href="/2019/03/13/deeplearning1_1/" title="1.1 Introduction to Deep Learning">
-							1.1 Introduction to Deep Learning
-						</a>
-						<p>
-							神经网络的基本介绍什么是神经网络？在回答这个问题之前让我们看看我们的大脑的神经元是怎么运作的？
-大脑中的每一个神经元都可以被认为是一个处理单元(processing unit/Nucleus)，他包含许多的输入(树突)并且有一个输出(...
-						</p>
-					</div>
-
-					<a href="/2019/03/13/deeplearning1_1/" title="1.1 Introduction to Deep Learning">				
-						<img src="/img/cart_cover.jpg" class="relateImg" alt="1.1 Introduction to Deep Learning">
-					</a>
-				</li>											
-		
-		
-				<li>
-					<div>
-						<a href="/2019/03/13/test/" title="">
-							
-						</a>
-						<p>
-							title: Annie主題使用說明date: 2018-08-27 20:16:19cover: /img/post-cover/74.jpgcategories: HEXO博客tags: 說明
-
-						</p>
-					</div>
-
-					<a href="/2019/03/13/test/" title="">				
-						<img src="/img/cart_cover.jpg" class="relateImg">
-					</a>
-				</li>											
-		
 		
 				<li>
 					<div>
@@ -599,6 +531,58 @@ Experiental/Materials and Met...
 				</li>											
 		
 		
+				<li>
+					<div>
+						<a href="/2019/03/13/live-时间管理/" title="建立专属的时间管理系统">
+							建立专属的时间管理系统
+						</a>
+						<p>
+							基础—-时间管理的好方法
+任务前:to do list
+任务中:番茄工作法
+任务后:时间记录法
+
+任务前
+选取合适的时间步长,列出明天的计划
+使用四像限工作法
+适量适度原则:依照对自己的评估制定计划
+
+
+任务中
+灵活处理
+寻找适合自己...
+						</p>
+					</div>
+
+					<a href="/2019/03/13/live-时间管理/" title="建立专属的时间管理系统">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="建立专属的时间管理系统">
+					</a>
+				</li>											
+		
+		
+				<li>
+					<div>
+						<a href="/2019/03/13/live-患上努力焦虑症/" title="患上[努力焦虑症]，怎么办？">
+							患上[努力焦虑症]，怎么办？
+						</a>
+						<p>
+							
+三种努力
+为了目标而努力  
+追求努力的状态的努力 努力是一种自我辩解 营造在路上的感觉 ！！！
+追求努力的感觉的努力
+
+前者非常清楚自己的目标和努力的关系后两者并不清楚,不要营造一种努力的假象,你只是看起来很努力
+焦虑的本质和努力...
+						</p>
+					</div>
+
+					<a href="/2019/03/13/live-患上努力焦虑症/" title="患上[努力焦虑症]，怎么办？">				
+						<img src="/img/cart_cover.jpg" class="relateImg" alt="患上[努力焦虑症]，怎么办？">
+					</a>
+				</li>											
+		
+		
 	</ul>
 </div>	
 			</div>
@@ -689,13 +673,6 @@ Experiental/Materials and Met...
 		插件作者：KELEN
 		插件来源: https://github.com/KELEN/katelog
 -->
-
-		
-
-		<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
-		<script src="/plugin/toc/katelog.min.js"></script>
-
-		
 	
 		</main>
 		
