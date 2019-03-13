@@ -33,8 +33,9 @@
 
   <!-- leancloud -->
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-<script src="/js/leancloud.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
+<script src="/js/leancloud.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 	<body>
 		<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Preloader -->
 
@@ -91,6 +92,10 @@
 						</li>
 					
 
+					
+						<li class="menu-search">
+							<a href="javascript:;" class="popup-trigger" title="Search">搜索</a>
+						</li>
 					
 				</ul>			
 			</div>				
@@ -213,6 +218,10 @@
 				</li>
 			
 
+			
+				<li class="menu-search">
+					<a href="javascript:;" class="popup-trigger" title="Search">搜索</a>
+				</li>
 			
 		</ul>
 	</div>
@@ -337,31 +346,58 @@
 <h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串))"></a>String(字符串))</h2><ul>
 <li>在pyton中字符串采用单引号或者双引号，同时可以使用反斜杠 () 表示转义特殊字符</li>
 </ul>
-<h3 id="字符串索引和切片"><a href="#字符串索引和切片" class="headerlink" title="字符串索引和切片"></a>字符串索引和切片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">'abcdefg'</span></span><br><span class="line">print(str1[<span class="number">0</span>])</span><br><span class="line">print(str1[<span class="number">0</span>:<span class="number">2</span>]) <span class="comment">#左闭右开</span></span><br><span class="line">print(str1[<span class="number">-1</span>:<span class="number">-4</span>:<span class="number">-1</span>]) <span class="comment">#第三个参数表示步长</span></span><br><span class="line">print(type(str1[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
+<h3 id="字符串索引和切片"><a href="#字符串索引和切片" class="headerlink" title="字符串索引和切片"></a>字符串索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = 'abcdefg'
+print(str1[0])
+print(str1[0:2]) #左闭右开
+print(str1[-1:-4:-1]) #第三个参数表示步长
+print(type(str1[0]))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>a
 ab
 gfe
 &lt;class &#39;str&#39;&gt;
-</code></pre><h3 id="字符串的加法和乘法"><a href="#字符串的加法和乘法" class="headerlink" title="字符串的加法和乘法"></a>字符串的加法和乘法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">'---'</span></span><br><span class="line">str2 = <span class="string">'***'</span></span><br><span class="line">print(str1 + str2)</span><br><span class="line">print(str2*<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="字符串的加法和乘法"><a href="#字符串的加法和乘法" class="headerlink" title="字符串的加法和乘法"></a>字符串的加法和乘法</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = '---'
+str2 = '***'
+print(str1 + str2)
+print(str2*5)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>---***
 ***************
 </code></pre><h2 id="List-列表"><a href="#List-列表" class="headerlink" title="List(列表)"></a>List(列表)</h2><ul>
 <li>列表使用方括号中间元素用逗号隔开</li>
 </ul>
-<h3 id="列表的索引和切片"><a href="#列表的索引和切片" class="headerlink" title="列表的索引和切片"></a>列表的索引和切片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">'你好'</span>,<span class="string">'Leiy'</span>,<span class="string">'Syy'</span>]</span><br><span class="line">print(list1[:])</span><br><span class="line">print(list1[<span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line">print(type(list1))</span><br><span class="line">print(type(list1[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
+<h3 id="列表的索引和切片"><a href="#列表的索引和切片" class="headerlink" title="列表的索引和切片"></a>列表的索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','Leiy','Syy']
+print(list1[:])
+print(list1[0:2])
+print(type(list1))
+print(type(list1[0]))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>[&#39;你好&#39;, &#39;Leiy&#39;, &#39;Syy&#39;]
 [&#39;你好&#39;, &#39;Leiy&#39;]
 &lt;class &#39;list&#39;&gt;
 &lt;class &#39;str&#39;&gt;
-</code></pre><h3 id="列表拼接"><a href="#列表拼接" class="headerlink" title="列表拼接"></a>列表拼接</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">'你好'</span>]</span><br><span class="line">list2 = [<span class="string">'苏大'</span>]</span><br><span class="line">print(list1+list2)</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="列表拼接"><a href="#列表拼接" class="headerlink" title="列表拼接"></a>列表拼接</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好']
+list2 = ['苏大']
+print(list1+list2)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre><code>[&#39;你好&#39;, &#39;苏大&#39;]
-</code></pre><h3 id="修改列表元素"><a href="#修改列表元素" class="headerlink" title="修改列表元素"></a>修改列表元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">'你好'</span>,<span class="string">'abcd'</span>,<span class="number">123</span>]</span><br><span class="line"><span class="comment"># list1[1][1] = 'a'  #error 字符串可以被索引但是没法子修改</span></span><br><span class="line">list1[<span class="number">0</span>] = <span class="string">'a'</span></span><br><span class="line">print(list1)</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="修改列表元素"><a href="#修改列表元素" class="headerlink" title="修改列表元素"></a>修改列表元素</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','abcd',123]
+# list1[1][1] = 'a'  #error 字符串可以被索引但是没法子修改
+list1[0] = 'a'
+print(list1)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>[&#39;a&#39;, &#39;abcd&#39;, 123]
 </code></pre><h2 id="Tuple-元祖"><a href="#Tuple-元祖" class="headerlink" title="Tuple(元祖)"></a>Tuple(元祖)</h2><ul>
 <li>元祖使用小括号中间元素用逗号隔开</li>
 <li>tuple的元素不可以改变但是可以包含可以改变的对象如list</li>
 </ul>
-<h3 id="元祖索引"><a href="#元祖索引" class="headerlink" title="元祖索引"></a>元祖索引</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tuple1 = (<span class="string">'abc'</span>, <span class="string">'你好'</span>, <span class="number">123</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">print(tuple1)       <span class="comment"># 打印整个元祖数据</span></span><br><span class="line">print(tuple1[<span class="number">0</span>:<span class="number">2</span>])  <span class="comment"># 打印第二个元祖数据</span></span><br><span class="line"></span><br><span class="line">tuple1[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">4</span>    <span class="comment"># 修改元祖第3个数据的第一个数据 元祖虽然不可变但列表可变</span></span><br><span class="line">print(tuple1)       <span class="comment"># 打印修改后的元祖</span></span><br></pre></td></tr></table></figure>
+<h3 id="元祖索引"><a href="#元祖索引" class="headerlink" title="元祖索引"></a>元祖索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">tuple1 = ('abc', '你好', 123, [1, 2, 3, 4])
+print(tuple1)       # 打印整个元祖数据
+print(tuple1[0:2])  # 打印第二个元祖数据
+
+tuple1[3][0] = 4    # 修改元祖第3个数据的第一个数据 元祖虽然不可变但列表可变
+print(tuple1)       # 打印修改后的元祖
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>(&#39;abc&#39;, &#39;你好&#39;, 123, [1, 2, 3, 4])
 (&#39;abc&#39;, &#39;你好&#39;)
 (&#39;abc&#39;, &#39;你好&#39;, 123, [4, 2, 3, 4])
@@ -370,7 +406,19 @@ gfe
 <li>键值key必须使用不可边类型(字符串,数值,元祖),同一个字典中,键必须是唯一的</li>
 <li>创建空字典用{}</li>
 </ul>
-<h3 id="字典的索引"><a href="#字典的索引" class="headerlink" title="字典的索引"></a>字典的索引</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">'name'</span>:<span class="string">'Leiy'</span>,<span class="string">'age'</span>:<span class="number">17</span>,<span class="string">'sex'</span>:<span class="string">'man'</span>&#125;</span><br><span class="line">print(dict1)</span><br><span class="line">dict2 = &#123;<span class="string">'name'</span>:<span class="string">'Leiy'</span>,<span class="string">'age'</span>:<span class="number">17</span>,<span class="string">'sex'</span>:<span class="string">'man'</span>,<span class="string">'name'</span>:<span class="string">'syy'</span>&#125; <span class="comment">#同一个字典产生了两个name 后面一个name覆盖了前面</span></span><br><span class="line">print(dict2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(dict2[<span class="string">'name'</span>])<span class="comment">#这边是索引dict1的name值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dict3 = &#123;<span class="string">'zhuang'</span>:&#123;<span class="string">'age'</span>:<span class="number">17</span>,<span class="string">'name'</span>:<span class="string">'Leiy'</span>&#125;&#125;</span><br><span class="line">print(dict3[<span class="string">'zhuang'</span>])        <span class="comment">#字典索引</span></span><br><span class="line">print(dict3[<span class="string">'zhuang'</span>][<span class="string">'name'</span>])<span class="comment">#多层索引的获取</span></span><br></pre></td></tr></table></figure>
+<h3 id="字典的索引"><a href="#字典的索引" class="headerlink" title="字典的索引"></a>字典的索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">dict1 = {'name':'Leiy','age':17,'sex':'man'}
+print(dict1)
+dict2 = {'name':'Leiy','age':17,'sex':'man','name':'syy'} #同一个字典产生了两个name 后面一个name覆盖了前面
+print(dict2)
+
+
+print(dict2['name'])#这边是索引dict1的name值
+
+
+dict3 = {'zhuang':{'age':17,'name':'Leiy'}}
+print(dict3['zhuang'])        #字典索引
+print(dict3['zhuang']['name'])#多层索引的获取
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code>{&#39;name&#39;: &#39;Leiy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}
 {&#39;name&#39;: &#39;syy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}
 syy
@@ -434,7 +482,9 @@ Leiy
 							输入与输出inpute
 通过键盘获取数据，然后保存到指定变量中，都是按照字符串方式进行保存
 
-1234567a = input('请输入数据1:')b = input('请输入数据2:')print(a + b)  # a,b都是按照...
+a = input('请输入数据1:')
+b = input('请输入数据2:')
+print(a + b)  # a,b都是按照字符串形式...
 						</p>
 					</div>
 
@@ -467,7 +517,13 @@ pandas中主要的数据结构为Series和DataFrame,其中Series是一种类似�
 							NumPy总结
 						</a>
 						<p>
-							ndarray(N-dimensional array)的创建通过列表创建123456789lis1 = [1,2,3,4]lis2 = [    [1,2,3],    [4,5,6],    [7,8,9]]print(np.ar...
+							ndarray(N-dimensional array)的创建通过列表创建lis1 = [1,2,3,4]
+lis2 = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+print(np.array...
 						</p>
 					</div>
 
@@ -487,7 +543,8 @@ pandas中主要的数据结构为Series和DataFrame,其中Series是一种类似�
 Python最常用的绘图库,提供了一整套十分适合交互式绘图的命令API,比较方便的就可以将其嵌入到GUI应用程序中。
 
 
-线图figure使用12345678910111213data = np.arange...
+线图figure使用data = np.arange(-3,3,0.1)
+x = np...
 						</p>
 					</div>
 
@@ -503,7 +560,8 @@ Python最常用的绘图库,提供了一整套十分适合交互式绘图的命�
 							Markdown语法之公式编辑
 						</a>
 						<p>
-							MathJax引擎配置首先我们选用MathJax引擎，插入以下代码至你要编辑的MD文件中1&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax...
+							MathJax引擎配置首先我们选用MathJax引擎，插入以下代码至你要编辑的MD文件中
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax...
 						</p>
 					</div>
 
@@ -549,7 +607,11 @@ Experiental/Materials and Met...
 						</a>
 						<p>
 							Markdown标题设置Markdown标题的设置通过设置 # 的个数来确定而 # 个数的范围是 1～6
-1234567# 一级标题## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题ps: # ...
+    # 一级标题
+    ## 二级标题
+    ### 三级标题
+    #### 四级标题
+    ##### 五级标题...
 						</p>
 					</div>
 
@@ -813,6 +875,65 @@ Experiental/Materials and Met...
 
 
 
+
+    <!--
+	时间：2018-10-3
+	描述：
+		插件名称：hexo-generator-search-zip
+		插件来源: https://github.com/SuperKieran/hexo-generator-search-zip
+		代码参考：https://github.com/SuperKieran/TKL/blob/master/layout/_partial/search.ejs(Include: js & css)	
+-->
+<div class="popup search-popup local-search-popup">
+	<div class="local-search-container">
+		<span class="popup-btn-close">
+      ESC
+   </span>
+		<div class="local-search-header">
+			<input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+		</div>
+		<div class="local-search-body">
+			<div id="local-search-output"></div>
+		</div>
+		<div class="local-search-footer">
+			
+
+   
+	<div id="topN"></div>
+	
+    <script>
+        var appid = 'dX--',
+            appkey = 'dx--',
+            limitCount = 10;
+        if( $('#topN').length ){
+            AV.initialize(appid, appkey);
+            var Counter = AV.Object.extend("Counter");  
+            topNPost(Counter, limitCount);
+        }
+    </script>
+   
+
+		</div>
+	</div>
+</div>
+
+<script src="/js/ziploader.js"></script>
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+	var search_path = 'search.json',
+		zip_Path = '/search.zip',
+		version_Path = '/searchVersion.txt',
+		input_Trigger = 'auto',
+		top_N = '2';
+
+	themeLocalSearch({
+		search_path, 
+		zip_Path, 
+		version_Path, 
+		input_Trigger, 
+		top_N
+	});
+</script>
 
 
 
