@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://leiy.live/2019/03/13/Python%E6%80%BB%E7%BB%93(1)/</loc>
+    
+    <lastmod>2019-03-14T07:51:22.909Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://leiy.live/2019/03/13/test/</loc>
     
     <lastmod>2019-03-13T12:27:43.430Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://leiy.live/2019/03/13/Python%E6%80%BB%E7%BB%93(2)/</loc>
     
     <lastmod>2018-10-05T09:35:39.292Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://leiy.live/2019/03/13/Python%E6%80%BB%E7%BB%93(1)/</loc>
-    
-    <lastmod>2018-10-03T11:21:05.428Z</lastmod>
     
   </url>
   
@@ -131,13 +131,6 @@
     <loc>http://leiy.live/oldBlogs/hello-world.html</loc>
     
     <lastmod>2018-08-09T07:31:58.458Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://leiy.live/2019/03/12/hello-world/</loc>
-    
-    <lastmod>2017-10-28T00:39:58.000Z</lastmod>
     
   </url>
   

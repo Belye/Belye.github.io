@@ -68,6 +68,37 @@
   </entry>
   
   <entry>
+    <title>Python入门之基本语法和数据类型</title>
+    <link href="http://leiy.live/2019/03/13/Python%E6%80%BB%E7%BB%93(1)/"/>
+    <id>http://leiy.live/2019/03/13/Python总结(1)/</id>
+    <published>2019-03-13T04:30:03.376Z</published>
+    <updated>2019-03-14T07:51:22.909Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul><li>单行注释使用 “#” 开头</li><li>多行注释使用 ‘’‘注释内容’‘’</li></ul><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul><li>变量命名规则采用驼峰命名法,驼峰命名法分为大驼峰(UserName)和小驼峰(userName)</li></ul><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2><p>int(整数)<br>float(浮点数)<br>complex(复数)<br>bool(布尔)</p><h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串))"></a>String(字符串))</h2><ul><li>在pyton中字符串采用单引号或者双引号，同时可以使用反斜杠 () 表示转义特殊字符</li></ul><h3 id="字符串索引和切片"><a href="#字符串索引和切片" class="headerlink" title="字符串索引和切片"></a>字符串索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = 'abcdefg'print(str1[0])print(str1[0:2]) #左闭右开print(str1[-1:-4:-1]) #第三个参数表示步长print(type(str1[0]))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>aabgfe&lt;class &#39;str&#39;&gt;</code></pre><h3 id="字符串的加法和乘法"><a href="#字符串的加法和乘法" class="headerlink" title="字符串的加法和乘法"></a>字符串的加法和乘法</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = '---'str2 = '***'print(str1 + str2)print(str2*5)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre><code>---******************</code></pre><h2 id="List-列表"><a href="#List-列表" class="headerlink" title="List(列表)"></a>List(列表)</h2><ul><li>列表使用方括号中间元素用逗号隔开</li></ul><h3 id="列表的索引和切片"><a href="#列表的索引和切片" class="headerlink" title="列表的索引和切片"></a>列表的索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','Leiy','Syy']print(list1[:])print(list1[0:2])print(type(list1))print(type(list1[0]))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;你好&#39;, &#39;Leiy&#39;, &#39;Syy&#39;][&#39;你好&#39;, &#39;Leiy&#39;]&lt;class &#39;list&#39;&gt;&lt;class &#39;str&#39;&gt;</code></pre><h3 id="列表拼接"><a href="#列表拼接" class="headerlink" title="列表拼接"></a>列表拼接</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好']list2 = ['苏大']print(list1+list2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;你好&#39;, &#39;苏大&#39;]</code></pre><h3 id="修改列表元素"><a href="#修改列表元素" class="headerlink" title="修改列表元素"></a>修改列表元素</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','abcd',123]# list1[1][1] = 'a'  #error 字符串可以被索引但是没法子修改list1[0] = 'a'print(list1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;a&#39;, &#39;abcd&#39;, 123]</code></pre><h2 id="Tuple-元祖"><a href="#Tuple-元祖" class="headerlink" title="Tuple(元祖)"></a>Tuple(元祖)</h2><ul><li>元祖使用小括号中间元素用逗号隔开</li><li>tuple的元素不可以改变但是可以包含可以改变的对象如list</li></ul><h3 id="元祖索引"><a href="#元祖索引" class="headerlink" title="元祖索引"></a>元祖索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">tuple1 = ('abc', '你好', 123, [1, 2, 3, 4])print(tuple1)       # 打印整个元祖数据print(tuple1[0:2])  # 打印第二个元祖数据tuple1[3][0] = 4    # 修改元祖第3个数据的第一个数据 元祖虽然不可变但列表可变print(tuple1)       # 打印修改后的元祖<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>(&#39;abc&#39;, &#39;你好&#39;, 123, [1, 2, 3, 4])(&#39;abc&#39;, &#39;你好&#39;)(&#39;abc&#39;, &#39;你好&#39;, 123, [4, 2, 3, 4])</code></pre><h2 id="Dictionary-字典"><a href="#Dictionary-字典" class="headerlink" title="Dictionary(字典)"></a>Dictionary(字典)</h2><ul><li>字典是一种映射类型,使用{}</li><li>键值key必须使用不可边类型(字符串,数值,元祖),同一个字典中,键必须是唯一的</li><li>创建空字典用{}</li></ul><h3 id="字典的索引"><a href="#字典的索引" class="headerlink" title="字典的索引"></a>字典的索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">dict1 = {'name':'Leiy','age':17,'sex':'man'}print(dict1)dict2 = {'name':'Leiy','age':17,'sex':'man','name':'syy'} #同一个字典产生了两个name 后面一个name覆盖了前面print(dict2)print(dict2['name'])#这边是索引dict1的name值dict3 = {'zhuang':{'age':17,'name':'Leiy'}}print(dict3['zhuang'])        #字典索引print(dict3['zhuang']['name'])#多层索引的获取<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>{&#39;name&#39;: &#39;Leiy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}{&#39;name&#39;: &#39;syy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}syy{&#39;age&#39;: 17, &#39;name&#39;: &#39;Leiy&#39;}Leiy</code></pre><h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ul><li>算术运算符有七种分别为<br>+, -, <em>, /, %(取余)), *</em>(幂)), //(取整)</li></ul><h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ul><li>赋值运算符有八种分别为<br>=, +=, -=, <em>=, /=, %=, *</em>=, //=</li></ul><h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><ul><li>比较运算符有六种<br>==, ！=, &gt;, &lt;, &gt;=, &lt;=</li></ul><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>and(布尔‘与’),or(布尔’或‘),not(布尔’非‘)</p><h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p>&amp;(按位与)<br>|(按位或)<br>^(按位异或)<br>～(按位取反)<br>&lt;&lt;(左移运算符)<br>>&gt;(右移运算符)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;单行注释使用 “#” 开头&lt;/li&gt;
+&lt;li&gt;多行注释使用 ‘’‘注释内容’‘’&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;变量&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="Python入门" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/"/>
+    
+      <category term="基本语法和数据类型" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    
+    
+      <category term="Python" scheme="http://leiy.live/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Pandas总结</title>
     <link href="http://leiy.live/2019/03/13/pandas/"/>
     <id>http://leiy.live/2019/03/13/pandas/</id>
@@ -92,37 +123,6 @@
     
     
       <category term="Pandas" scheme="http://leiy.live/tags/Pandas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python入门之基本语法和数据类型</title>
-    <link href="http://leiy.live/2019/03/13/Python%E6%80%BB%E7%BB%93(1)/"/>
-    <id>http://leiy.live/2019/03/13/Python总结(1)/</id>
-    <published>2019-03-13T04:30:03.376Z</published>
-    <updated>2018-10-03T11:21:05.428Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul><li>单行注释使用 “#” 开头</li><li>多行注释使用 ‘’‘注释内容’‘’</li></ul><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul><li>变量命名规则采用驼峰命名法,驼峰命名法分为大驼峰(UserName)和小驼峰(userName)</li></ul><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2><p>int(整数)<br>float(浮点数)<br>complex(复数)<br>bool(布尔)</p><h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串))"></a>String(字符串))</h2><ul><li>在pyton中字符串采用单引号或者双引号，同时可以使用反斜杠 () 表示转义特殊字符</li></ul><h3 id="字符串索引和切片"><a href="#字符串索引和切片" class="headerlink" title="字符串索引和切片"></a>字符串索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = 'abcdefg'print(str1[0])print(str1[0:2]) #左闭右开print(str1[-1:-4:-1]) #第三个参数表示步长print(type(str1[0]))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>aabgfe&lt;class &#39;str&#39;&gt;</code></pre><h3 id="字符串的加法和乘法"><a href="#字符串的加法和乘法" class="headerlink" title="字符串的加法和乘法"></a>字符串的加法和乘法</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = '---'str2 = '***'print(str1 + str2)print(str2*5)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre><code>---******************</code></pre><h2 id="List-列表"><a href="#List-列表" class="headerlink" title="List(列表)"></a>List(列表)</h2><ul><li>列表使用方括号中间元素用逗号隔开</li></ul><h3 id="列表的索引和切片"><a href="#列表的索引和切片" class="headerlink" title="列表的索引和切片"></a>列表的索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','Leiy','Syy']print(list1[:])print(list1[0:2])print(type(list1))print(type(list1[0]))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;你好&#39;, &#39;Leiy&#39;, &#39;Syy&#39;][&#39;你好&#39;, &#39;Leiy&#39;]&lt;class &#39;list&#39;&gt;&lt;class &#39;str&#39;&gt;</code></pre><h3 id="列表拼接"><a href="#列表拼接" class="headerlink" title="列表拼接"></a>列表拼接</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好']list2 = ['苏大']print(list1+list2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;你好&#39;, &#39;苏大&#39;]</code></pre><h3 id="修改列表元素"><a href="#修改列表元素" class="headerlink" title="修改列表元素"></a>修改列表元素</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','abcd',123]# list1[1][1] = 'a'  #error 字符串可以被索引但是没法子修改list1[0] = 'a'print(list1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;a&#39;, &#39;abcd&#39;, 123]</code></pre><h2 id="Tuple-元祖"><a href="#Tuple-元祖" class="headerlink" title="Tuple(元祖)"></a>Tuple(元祖)</h2><ul><li>元祖使用小括号中间元素用逗号隔开</li><li>tuple的元素不可以改变但是可以包含可以改变的对象如list</li></ul><h3 id="元祖索引"><a href="#元祖索引" class="headerlink" title="元祖索引"></a>元祖索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">tuple1 = ('abc', '你好', 123, [1, 2, 3, 4])print(tuple1)       # 打印整个元祖数据print(tuple1[0:2])  # 打印第二个元祖数据tuple1[3][0] = 4    # 修改元祖第3个数据的第一个数据 元祖虽然不可变但列表可变print(tuple1)       # 打印修改后的元祖<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>(&#39;abc&#39;, &#39;你好&#39;, 123, [1, 2, 3, 4])(&#39;abc&#39;, &#39;你好&#39;)(&#39;abc&#39;, &#39;你好&#39;, 123, [4, 2, 3, 4])</code></pre><h2 id="Dictionary-字典"><a href="#Dictionary-字典" class="headerlink" title="Dictionary(字典)"></a>Dictionary(字典)</h2><ul><li>字典是一种映射类型,使用{}</li><li>键值key必须使用不可边类型(字符串,数值,元祖),同一个字典中,键必须是唯一的</li><li>创建空字典用{}</li></ul><h3 id="字典的索引"><a href="#字典的索引" class="headerlink" title="字典的索引"></a>字典的索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">dict1 = {'name':'Leiy','age':17,'sex':'man'}print(dict1)dict2 = {'name':'Leiy','age':17,'sex':'man','name':'syy'} #同一个字典产生了两个name 后面一个name覆盖了前面print(dict2)print(dict2['name'])#这边是索引dict1的name值dict3 = {'zhuang':{'age':17,'name':'Leiy'}}print(dict3['zhuang'])        #字典索引print(dict3['zhuang']['name'])#多层索引的获取<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>{&#39;name&#39;: &#39;Leiy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}{&#39;name&#39;: &#39;syy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}syy{&#39;age&#39;: 17, &#39;name&#39;: &#39;Leiy&#39;}Leiy</code></pre><h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ul><li>算术运算符有七种分别为<br>+, -, <em>, /, %(取余)), *</em>(幂)), //(取整)</li></ul><h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ul><li>赋值运算符有八种分别为<br>=, +=, -=, <em>=, /=, %=, *</em>=, //=</li></ul><h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><ul><li>比较运算符有六种<br>==, ！=, &gt;, &lt;, &gt;=, &lt;=</li></ul><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>and(布尔‘与’),or(布尔’或‘),not(布尔’非‘)</p><h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p>&amp;(按位与)<br>|(按位或)<br>^(按位异或)<br>～(按位取反)<br>&lt;&lt;(左移运算符)<br>>&gt;(右移运算符)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;单行注释使用 “#” 开头&lt;/li&gt;
-&lt;li&gt;多行注释使用 ‘’‘注释内容’‘’&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;变量&quot;&gt;
-      
-    
-    </summary>
-    
-      <category term="Python入门" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/"/>
-    
-      <category term="基本语法和数据类型" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-    
-    
-      <category term="Python" scheme="http://leiy.live/tags/Python/"/>
     
   </entry>
   
@@ -401,27 +401,6 @@
     
     
       <category term="deeplearning" scheme="http://leiy.live/tags/deeplearning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://leiy.live/2019/03/12/hello-world/"/>
-    <id>http://leiy.live/2019/03/12/hello-world/</id>
-    <published>2019-03-12T13:59:23.583Z</published>
-    <updated>2017-10-28T00:39:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-lang-bash"><code class="language-lang-bash">$ hexo new "My New Post"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-lang-bash"><code class="language-lang-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-lang-bash"><code class="language-lang-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-lang-bash"><code class="language-lang-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
     
   </entry>
   
