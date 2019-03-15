@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leiy.live/"/>
-  <updated>2019-03-13T12:27:43.430Z</updated>
+  <updated>2018-10-05T09:35:39.292Z</updated>
   <id>http://leiy.live/</id>
   
   <author>
@@ -15,30 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>test</title>
-    <link href="http://leiy.live/2019/03/13/test/"/>
-    <id>http://leiy.live/2019/03/13/test/</id>
-    <published>2019-03-13T12:07:52.706Z</published>
-    <updated>2019-03-13T12:27:43.430Z</updated>
-    
-    <content type="html"><![CDATA[<p>你好啊</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;你好啊&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="test" scheme="http://leiy.live/tags/test/"/>
-    
-  </entry>
   
   <entry>
     <title>Python入门之字符串处理</title>
@@ -61,37 +37,6 @@
       <category term="Python入门" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/"/>
     
       <category term="字符串处理" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/"/>
-    
-    
-      <category term="Python" scheme="http://leiy.live/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python入门之基本语法和数据类型</title>
-    <link href="http://leiy.live/2019/03/13/Python%E6%80%BB%E7%BB%93(1)/"/>
-    <id>http://leiy.live/2019/03/13/Python总结(1)/</id>
-    <published>2019-03-13T04:30:03.376Z</published>
-    <updated>2019-03-14T07:51:22.909Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul><li>单行注释使用 “#” 开头</li><li>多行注释使用 ‘’‘注释内容’‘’</li></ul><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul><li>变量命名规则采用驼峰命名法,驼峰命名法分为大驼峰(UserName)和小驼峰(userName)</li></ul><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2><p>int(整数)<br>float(浮点数)<br>complex(复数)<br>bool(布尔)</p><h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串))"></a>String(字符串))</h2><ul><li>在pyton中字符串采用单引号或者双引号，同时可以使用反斜杠 () 表示转义特殊字符</li></ul><h3 id="字符串索引和切片"><a href="#字符串索引和切片" class="headerlink" title="字符串索引和切片"></a>字符串索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = 'abcdefg'print(str1[0])print(str1[0:2]) #左闭右开print(str1[-1:-4:-1]) #第三个参数表示步长print(type(str1[0]))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>aabgfe&lt;class &#39;str&#39;&gt;</code></pre><h3 id="字符串的加法和乘法"><a href="#字符串的加法和乘法" class="headerlink" title="字符串的加法和乘法"></a>字符串的加法和乘法</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = '---'str2 = '***'print(str1 + str2)print(str2*5)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre><code>---******************</code></pre><h2 id="List-列表"><a href="#List-列表" class="headerlink" title="List(列表)"></a>List(列表)</h2><ul><li>列表使用方括号中间元素用逗号隔开</li></ul><h3 id="列表的索引和切片"><a href="#列表的索引和切片" class="headerlink" title="列表的索引和切片"></a>列表的索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','Leiy','Syy']print(list1[:])print(list1[0:2])print(type(list1))print(type(list1[0]))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;你好&#39;, &#39;Leiy&#39;, &#39;Syy&#39;][&#39;你好&#39;, &#39;Leiy&#39;]&lt;class &#39;list&#39;&gt;&lt;class &#39;str&#39;&gt;</code></pre><h3 id="列表拼接"><a href="#列表拼接" class="headerlink" title="列表拼接"></a>列表拼接</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好']list2 = ['苏大']print(list1+list2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;你好&#39;, &#39;苏大&#39;]</code></pre><h3 id="修改列表元素"><a href="#修改列表元素" class="headerlink" title="修改列表元素"></a>修改列表元素</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','abcd',123]# list1[1][1] = 'a'  #error 字符串可以被索引但是没法子修改list1[0] = 'a'print(list1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;a&#39;, &#39;abcd&#39;, 123]</code></pre><h2 id="Tuple-元祖"><a href="#Tuple-元祖" class="headerlink" title="Tuple(元祖)"></a>Tuple(元祖)</h2><ul><li>元祖使用小括号中间元素用逗号隔开</li><li>tuple的元素不可以改变但是可以包含可以改变的对象如list</li></ul><h3 id="元祖索引"><a href="#元祖索引" class="headerlink" title="元祖索引"></a>元祖索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">tuple1 = ('abc', '你好', 123, [1, 2, 3, 4])print(tuple1)       # 打印整个元祖数据print(tuple1[0:2])  # 打印第二个元祖数据tuple1[3][0] = 4    # 修改元祖第3个数据的第一个数据 元祖虽然不可变但列表可变print(tuple1)       # 打印修改后的元祖<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>(&#39;abc&#39;, &#39;你好&#39;, 123, [1, 2, 3, 4])(&#39;abc&#39;, &#39;你好&#39;)(&#39;abc&#39;, &#39;你好&#39;, 123, [4, 2, 3, 4])</code></pre><h2 id="Dictionary-字典"><a href="#Dictionary-字典" class="headerlink" title="Dictionary(字典)"></a>Dictionary(字典)</h2><ul><li>字典是一种映射类型,使用{}</li><li>键值key必须使用不可边类型(字符串,数值,元祖),同一个字典中,键必须是唯一的</li><li>创建空字典用{}</li></ul><h3 id="字典的索引"><a href="#字典的索引" class="headerlink" title="字典的索引"></a>字典的索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">dict1 = {'name':'Leiy','age':17,'sex':'man'}print(dict1)dict2 = {'name':'Leiy','age':17,'sex':'man','name':'syy'} #同一个字典产生了两个name 后面一个name覆盖了前面print(dict2)print(dict2['name'])#这边是索引dict1的name值dict3 = {'zhuang':{'age':17,'name':'Leiy'}}print(dict3['zhuang'])        #字典索引print(dict3['zhuang']['name'])#多层索引的获取<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>{&#39;name&#39;: &#39;Leiy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}{&#39;name&#39;: &#39;syy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}syy{&#39;age&#39;: 17, &#39;name&#39;: &#39;Leiy&#39;}Leiy</code></pre><h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ul><li>算术运算符有七种分别为<br>+, -, <em>, /, %(取余)), *</em>(幂)), //(取整)</li></ul><h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ul><li>赋值运算符有八种分别为<br>=, +=, -=, <em>=, /=, %=, *</em>=, //=</li></ul><h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><ul><li>比较运算符有六种<br>==, ！=, &gt;, &lt;, &gt;=, &lt;=</li></ul><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>and(布尔‘与’),or(布尔’或‘),not(布尔’非‘)</p><h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p>&amp;(按位与)<br>|(按位或)<br>^(按位异或)<br>～(按位取反)<br>&lt;&lt;(左移运算符)<br>>&gt;(右移运算符)</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;单行注释使用 “#” 开头&lt;/li&gt;
-&lt;li&gt;多行注释使用 ‘’‘注释内容’‘’&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;变量&quot;&gt;
-      
-    
-    </summary>
-    
-      <category term="Python入门" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/"/>
-    
-      <category term="基本语法和数据类型" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
     
     
       <category term="Python" scheme="http://leiy.live/tags/Python/"/>
@@ -123,6 +68,37 @@
     
     
       <category term="Pandas" scheme="http://leiy.live/tags/Pandas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python入门之基本语法和数据类型</title>
+    <link href="http://leiy.live/2019/03/13/Python%E6%80%BB%E7%BB%93(1)/"/>
+    <id>http://leiy.live/2019/03/13/Python总结(1)/</id>
+    <published>2019-03-13T04:30:03.376Z</published>
+    <updated>2019-03-14T08:00:10.167Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul><li>单行注释使用 “#” 开头</li><li>多行注释使用 ‘’‘注释内容’‘’</li></ul><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul><li>变量命名规则采用驼峰命名法,驼峰命名法分为大驼峰(UserName)和小驼峰(userName)</li></ul><h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2><p>int(整数)<br>float(浮点数)<br>complex(复数)<br>bool(布尔)</p><h2 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串))"></a>String(字符串))</h2><ul><li>在pyton中字符串采用单引号或者双引号，同时可以使用反斜杠 () 表示转义特殊字符</li></ul><h3 id="字符串索引和切片"><a href="#字符串索引和切片" class="headerlink" title="字符串索引和切片"></a>字符串索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = 'abcdefg'print(str1[0])print(str1[0:2]) #左闭右开print(str1[-1:-4:-1]) #第三个参数表示步长print(type(str1[0]))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>aabgfe&lt;class &#39;str&#39;&gt;</code></pre><h3 id="字符串的加法和乘法"><a href="#字符串的加法和乘法" class="headerlink" title="字符串的加法和乘法"></a>字符串的加法和乘法</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">str1 = '---'str2 = '***'print(str1 + str2)print(str2*5)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre><code>---******************</code></pre><h2 id="List-列表"><a href="#List-列表" class="headerlink" title="List(列表)"></a>List(列表)</h2><ul><li>列表使用方括号中间元素用逗号隔开</li></ul><h3 id="列表的索引和切片"><a href="#列表的索引和切片" class="headerlink" title="列表的索引和切片"></a>列表的索引和切片</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','Leiy','Syy']print(list1[:])print(list1[0:2])print(type(list1))print(type(list1[0]))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;你好&#39;, &#39;Leiy&#39;, &#39;Syy&#39;][&#39;你好&#39;, &#39;Leiy&#39;]&lt;class &#39;list&#39;&gt;&lt;class &#39;str&#39;&gt;</code></pre><h3 id="列表拼接"><a href="#列表拼接" class="headerlink" title="列表拼接"></a>列表拼接</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好']list2 = ['苏大']print(list1+list2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;你好&#39;, &#39;苏大&#39;]</code></pre><h3 id="修改列表元素"><a href="#修改列表元素" class="headerlink" title="修改列表元素"></a>修改列表元素</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">list1 = ['你好','abcd',123]# list1[1][1] = 'a'  #error 字符串可以被索引但是没法子修改list1[0] = 'a'print(list1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><pre><code>[&#39;a&#39;, &#39;abcd&#39;, 123]</code></pre><h2 id="Tuple-元祖"><a href="#Tuple-元祖" class="headerlink" title="Tuple(元祖)"></a>Tuple(元祖)</h2><ul><li>元祖使用小括号中间元素用逗号隔开</li><li>tuple的元素不可以改变但是可以包含可以改变的对象如list</li></ul><h3 id="元祖索引"><a href="#元祖索引" class="headerlink" title="元祖索引"></a>元祖索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">tuple1 = ('abc', '你好', 123, [1, 2, 3, 4])print(tuple1)       # 打印整个元祖数据print(tuple1[0:2])  # 打印第二个元祖数据tuple1[3][0] = 4    # 修改元祖第3个数据的第一个数据 元祖虽然不可变但列表可变print(tuple1)       # 打印修改后的元祖<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>(&#39;abc&#39;, &#39;你好&#39;, 123, [1, 2, 3, 4])(&#39;abc&#39;, &#39;你好&#39;)(&#39;abc&#39;, &#39;你好&#39;, 123, [4, 2, 3, 4])</code></pre><h2 id="Dictionary-字典"><a href="#Dictionary-字典" class="headerlink" title="Dictionary(字典)"></a>Dictionary(字典)</h2><ul><li>字典是一种映射类型,使用{}</li><li>键值key必须使用不可边类型(字符串,数值,元祖),同一个字典中,键必须是唯一的</li><li>创建空字典用{}</li></ul><h3 id="字典的索引"><a href="#字典的索引" class="headerlink" title="字典的索引"></a>字典的索引</h3><pre class="line-numbers language-lang-python"><code class="language-lang-python">dict1 = {'name':'Leiy','age':17,'sex':'man'}print(dict1)dict2 = {'name':'Leiy','age':17,'sex':'man','name':'syy'} #同一个字典产生了两个name 后面一个name覆盖了前面print(dict2)print(dict2['name'])#这边是索引dict1的name值dict3 = {'zhuang':{'age':17,'name':'Leiy'}}print(dict3['zhuang'])        #字典索引print(dict3['zhuang']['name'])#多层索引的获取<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre><code>{&#39;name&#39;: &#39;Leiy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}{&#39;name&#39;: &#39;syy&#39;, &#39;age&#39;: 17, &#39;sex&#39;: &#39;man&#39;}syy{&#39;age&#39;: 17, &#39;name&#39;: &#39;Leiy&#39;}Leiy</code></pre><h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ul><li>算术运算符有七种分别为<br>+, -, <em>, /, %(取余)), *</em>(幂)), //(取整)</li></ul><h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ul><li>赋值运算符有八种分别为<br>=, +=, -=, <em>=, /=, %=, *</em>=, //=</li></ul><h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><ul><li>比较运算符有六种<br>==, ！=, &gt;, &lt;, &gt;=, &lt;=</li></ul><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>and(布尔‘与’),or(布尔’或‘),not(布尔’非‘)</p><h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p>&amp;(按位与)<br>|(按位或)<br>^(按位异或)<br>～(按位取反)<br>&lt;&lt;(左移运算符)<br>>&gt;(右移运算符)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;单行注释使用 “#” 开头&lt;/li&gt;
+&lt;li&gt;多行注释使用 ‘’‘注释内容’‘’&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;变量&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="Python入门" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/"/>
+    
+      <category term="基本语法和数据类型" scheme="http://leiy.live/categories/Python%E5%85%A5%E9%97%A8/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    
+    
+      <category term="Python" scheme="http://leiy.live/tags/Python/"/>
     
   </entry>
   
@@ -293,34 +269,6 @@
   </entry>
   
   <entry>
-    <title>患上[努力焦虑症]，怎么办？</title>
-    <link href="http://leiy.live/2019/03/13/live-%E6%82%A3%E4%B8%8A%E5%8A%AA%E5%8A%9B%E7%84%A6%E8%99%91%E7%97%87/"/>
-    <id>http://leiy.live/2019/03/13/live-患上努力焦虑症/</id>
-    <published>2019-03-13T04:30:03.282Z</published>
-    <updated>2018-10-20T01:56:21.959Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.loli.net/2018/10/20/5bca842e59d8a.jpg" alt="焦虑.jpg"></p><h1 id="三种努力"><a href="#三种努力" class="headerlink" title="三种努力"></a>三种努力</h1><ul><li>为了目标而努力  </li><li>追求努力的状态的努力 努力是一种自我辩解 营造在路上的感觉 ！！！</li><li>追求努力的感觉的努力</li></ul><p><strong>前者非常清楚自己的目标和努力的关系后两者并不清楚,不要营造一种努力的假象,你只是看起来很努力</strong></p><h1 id="焦虑的本质和努力背后的动机"><a href="#焦虑的本质和努力背后的动机" class="headerlink" title="焦虑的本质和努力背后的动机"></a>焦虑的本质和努力背后的动机</h1><p>对不能控制的东西比较鸡血 对能控制的东西比较丧<br>对不能控制的东西顺其自然 对能控制的东西更为精进<br>而真正的努力需要同时把握<br>焦虑本本质是一种失控对能控制的东西不上进 对不能控制的领域强行控制<br><strong>那些大的目标并不是用来实现的而是用来缓解焦虑，想要缓解焦虑这些目标就必须远大，可这些目标并不是用来实现，了解焦虑的来源</strong></p><h1 id="持续的努力是如何维持的？"><a href="#持续的努力是如何维持的？" class="headerlink" title="持续的努力是如何维持的？"></a>持续的努力是如何维持的？</h1><ul><li>忘我，沉浸在追求目标的过程，呈现出一种福流的状态，沉浸在自己所能够控制的事物中,介于一种持续追求目标，却又不看重目标的状态</li></ul><h1 id="什么是努力的正确姿势？"><a href="#什么是努力的正确姿势？" class="headerlink" title="什么是努力的正确姿势？"></a>什么是努力的正确姿势？</h1><ul><li>真实的努力需要你盯着你能做的事情而不是那些你不能控制的事情,多去思考那些你能够控制的事情，而不是强行控制那些你做不了的事情</li><li>行动的努力，控制能控制的事情</li><li>一次只是制定一个目标</li><li><strong>真正有效的计划是控制，每一个不可控的东西都有可控的成分存在,把这些真正可控的东西做成计划，计划无法让你增加控制感，这就不是一个好的计划</strong></li><li><strong>真正的努力是控制我所能够控制的接纳我所控制不了的,从感受上，因为专注于此时此地的东西，它能制造更多的福流。从思维上，它看到的是能做的事情，而不是盯着不能做的事情。从行动上，通过做那些能控制的部分，来把事情往前推进。</strong></li></ul><h1 id="忠告"><a href="#忠告" class="headerlink" title="忠告"></a>忠告</h1><ul><li>不要总去回想你不能控制的过去，多想想你能控制的未来，<strong>活在当下</strong></li><li>学会选择面对苦难的选择</li><li>生活是为了工作还是工作是为了生活</li><li>不需要向别人证明你自己，只需要向自己证明你自己</li><li><strong>不要制定那种只要一停下来就觉得失败了的那种目标，多制定那种只要做一次就觉得自己成功了的那种目标，比如一周跑一次步</strong></li><li><strong>制定计划要在自己可控的范围之内，盲目的制定很多不可控的东西只是为了缓解你的焦虑，提供给你进步的幻想。</strong></li><li>如何完成多个目标？学会在一段时间内只有一个目标</li><li>知识和技能积累需要时间根植于真实</li></ul><p><img src="https://i.loli.net/2018/10/20/5bca8a43d1e50.jpg" alt="assj.jpg"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/10/20/5bca842e59d8a.jpg&quot; alt=&quot;焦虑.jpg&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;三种努力&quot;&gt;&lt;a href=&quot;#三种努力&quot; class=&quot;headerlink&quot; title=&quot;三种努力
-      
-    
-    </summary>
-    
-      <category term="知乎live" scheme="http://leiy.live/categories/%E7%9F%A5%E4%B9%8Elive/"/>
-    
-      <category term="患上[努力焦虑症]，怎么办？" scheme="http://leiy.live/categories/%E7%9F%A5%E4%B9%8Elive/%E6%82%A3%E4%B8%8A-%E5%8A%AA%E5%8A%9B%E7%84%A6%E8%99%91%E7%97%87-%EF%BC%8C%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/"/>
-    
-    
-      <category term="时间管理" scheme="http://leiy.live/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何开展高质量英文文献调研</title>
     <link href="http://leiy.live/2019/03/13/live-%E5%A6%82%E4%BD%95%E5%BC%80%E5%B1%95%E9%AB%98%E8%B4%A8%E9%87%8F%E8%8B%B1%E6%96%87%E6%96%87%E7%8C%AE%E8%B0%83%E7%A0%94/"/>
     <id>http://leiy.live/2019/03/13/live-如何开展高质量英文文献调研/</id>
@@ -345,6 +293,34 @@
     
     
       <category term="英文文献" scheme="http://leiy.live/tags/%E8%8B%B1%E6%96%87%E6%96%87%E7%8C%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>患上[努力焦虑症]，怎么办？</title>
+    <link href="http://leiy.live/2019/03/13/live-%E6%82%A3%E4%B8%8A%E5%8A%AA%E5%8A%9B%E7%84%A6%E8%99%91%E7%97%87/"/>
+    <id>http://leiy.live/2019/03/13/live-患上努力焦虑症/</id>
+    <published>2019-03-13T04:30:03.282Z</published>
+    <updated>2018-10-20T01:56:21.959Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.loli.net/2018/10/20/5bca842e59d8a.jpg" alt="焦虑.jpg"></p><h1 id="三种努力"><a href="#三种努力" class="headerlink" title="三种努力"></a>三种努力</h1><ul><li>为了目标而努力  </li><li>追求努力的状态的努力 努力是一种自我辩解 营造在路上的感觉 ！！！</li><li>追求努力的感觉的努力</li></ul><p><strong>前者非常清楚自己的目标和努力的关系后两者并不清楚,不要营造一种努力的假象,你只是看起来很努力</strong></p><h1 id="焦虑的本质和努力背后的动机"><a href="#焦虑的本质和努力背后的动机" class="headerlink" title="焦虑的本质和努力背后的动机"></a>焦虑的本质和努力背后的动机</h1><p>对不能控制的东西比较鸡血 对能控制的东西比较丧<br>对不能控制的东西顺其自然 对能控制的东西更为精进<br>而真正的努力需要同时把握<br>焦虑本本质是一种失控对能控制的东西不上进 对不能控制的领域强行控制<br><strong>那些大的目标并不是用来实现的而是用来缓解焦虑，想要缓解焦虑这些目标就必须远大，可这些目标并不是用来实现，了解焦虑的来源</strong></p><h1 id="持续的努力是如何维持的？"><a href="#持续的努力是如何维持的？" class="headerlink" title="持续的努力是如何维持的？"></a>持续的努力是如何维持的？</h1><ul><li>忘我，沉浸在追求目标的过程，呈现出一种福流的状态，沉浸在自己所能够控制的事物中,介于一种持续追求目标，却又不看重目标的状态</li></ul><h1 id="什么是努力的正确姿势？"><a href="#什么是努力的正确姿势？" class="headerlink" title="什么是努力的正确姿势？"></a>什么是努力的正确姿势？</h1><ul><li>真实的努力需要你盯着你能做的事情而不是那些你不能控制的事情,多去思考那些你能够控制的事情，而不是强行控制那些你做不了的事情</li><li>行动的努力，控制能控制的事情</li><li>一次只是制定一个目标</li><li><strong>真正有效的计划是控制，每一个不可控的东西都有可控的成分存在,把这些真正可控的东西做成计划，计划无法让你增加控制感，这就不是一个好的计划</strong></li><li><strong>真正的努力是控制我所能够控制的接纳我所控制不了的,从感受上，因为专注于此时此地的东西，它能制造更多的福流。从思维上，它看到的是能做的事情，而不是盯着不能做的事情。从行动上，通过做那些能控制的部分，来把事情往前推进。</strong></li></ul><h1 id="忠告"><a href="#忠告" class="headerlink" title="忠告"></a>忠告</h1><ul><li>不要总去回想你不能控制的过去，多想想你能控制的未来，<strong>活在当下</strong></li><li>学会选择面对苦难的选择</li><li>生活是为了工作还是工作是为了生活</li><li>不需要向别人证明你自己，只需要向自己证明你自己</li><li><strong>不要制定那种只要一停下来就觉得失败了的那种目标，多制定那种只要做一次就觉得自己成功了的那种目标，比如一周跑一次步</strong></li><li><strong>制定计划要在自己可控的范围之内，盲目的制定很多不可控的东西只是为了缓解你的焦虑，提供给你进步的幻想。</strong></li><li>如何完成多个目标？学会在一段时间内只有一个目标</li><li>知识和技能积累需要时间根植于真实</li></ul><p><img src="https://i.loli.net/2018/10/20/5bca8a43d1e50.jpg" alt="assj.jpg"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2018/10/20/5bca842e59d8a.jpg&quot; alt=&quot;焦虑.jpg&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;三种努力&quot;&gt;&lt;a href=&quot;#三种努力&quot; class=&quot;headerlink&quot; title=&quot;三种努力
+      
+    
+    </summary>
+    
+      <category term="知乎live" scheme="http://leiy.live/categories/%E7%9F%A5%E4%B9%8Elive/"/>
+    
+      <category term="患上[努力焦虑症]，怎么办？" scheme="http://leiy.live/categories/%E7%9F%A5%E4%B9%8Elive/%E6%82%A3%E4%B8%8A-%E5%8A%AA%E5%8A%9B%E7%84%A6%E8%99%91%E7%97%87-%EF%BC%8C%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/"/>
+    
+    
+      <category term="时间管理" scheme="http://leiy.live/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
