@@ -107,15 +107,15 @@
 <meta property="og:site_name" content="Leiy">
 <meta property="og:description" content="论文题目：A Multiresolution Convolutional Neural Network with Partial Label Training for Annotating Reflectance Confocal Microscopy Images of Skin 核心内容 提出了一种嵌套式的Unet结构，充分利用图像的多尺寸信息 在嵌套的结构中加入辅助loss来帮助网络更好的进">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://leiy.live/2019/03/26/paper-基于多分辨率卷积神经网络结构的共聚焦显微镜下的图像分割/D669FBAEC5FB4BBCB2E49B5E5246459F">
-<meta property="og:image" content="http://leiy.live/2019/03/26/paper-基于多分辨率卷积神经网络结构的共聚焦显微镜下的图像分割/ABA5A24B7010456987E632E6367260F8">
-<meta property="og:image" content="http://leiy.live/2019/03/26/paper-基于多分辨率卷积神经网络结构的共聚焦显微镜下的图像分割/C2929AA30C0844DCBACE8B22749A8A47">
-<meta property="og:image" content="http://leiy.live/2019/03/26/paper-基于多分辨率卷积神经网络结构的共聚焦显微镜下的图像分割/6F932C249F9F4579B9E62BDB3F356BF1">
-<meta property="og:updated_time" content="2019-03-26T01:15:15.654Z">
+<meta property="og:image" content="https://i.loli.net/2019/03/26/5c997e282d286.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/03/26/5c997f8a28204.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/03/26/5c997e281a1f2.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/03/26/5c997e285580c.jpg">
+<meta property="og:updated_time" content="2019-03-26T01:26:40.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于多分辨率卷积神经网络结构的共聚焦显微镜下的图像分割">
 <meta name="twitter:description" content="论文题目：A Multiresolution Convolutional Neural Network with Partial Label Training for Annotating Reflectance Confocal Microscopy Images of Skin 核心内容 提出了一种嵌套式的Unet结构，充分利用图像的多尺寸信息 在嵌套的结构中加入辅助loss来帮助网络更好的进">
-<meta name="twitter:image" content="http://leiy.live/2019/03/26/paper-基于多分辨率卷积神经网络结构的共聚焦显微镜下的图像分割/D669FBAEC5FB4BBCB2E49B5E5246459F">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/26/5c997e282d286.jpg">
 
 
 
@@ -386,8 +386,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper/图像分割/" itemprop="url" rel="index">
-                    <span itemprop="name">图像分割</span>
+                  <a href="/categories/Paper/MICCAI2018-基于多分辨率卷积神经网络结构的共聚焦显微镜下的图像分割/" itemprop="url" rel="index">
+                    <span itemprop="name">MICCAI2018-基于多分辨率卷积神经网络结构的共聚焦显微镜下的图像分割</span>
                   </a>
                 </span>
 
@@ -462,22 +462,23 @@
 </ul>
 </li>
 </ul>
-<p><img src="D669FBAEC5FB4BBCB2E49B5E5246459F" alt="image"></p>
+<p><img src="https://i.loli.net/2019/03/26/5c997e282d286.jpg" alt="Snipaste_2019-03-26_09-18-09.jpg"></p>
 <p>从网络结构图中可以很清晰的看到作者采用了第三种方式来构建自己的网络模型，其实网络结构挺简单的，大体上看下就知道是个什么意思，可惜的是作者并没有在论文中完整的提及网络模型的相关参数，在网络中，作者并不是单纯的采用了嵌套的Unet的结构，而是加入了辅助loss，这也是论文的创新点之一，作者加入辅助loss的动机是，先使用Unet网络进行粗分割，将粗分割的结果送入下一级的Unet网络,使得下一级的网络能够对结果进行细分，作者认为这种拓扑结构有利于更加连贯的分割。通过计算中间层的loss所带来的好处是1.获取深层次访问权，更新网络的更深层次系数2.训练初期，更好的去引导模型</p>
-<h1 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h1><p>在某一阶层(总共三个阶层)作者采用的带权重的戴斯系数作为这一阶层的loss(应对数据不平衡),具体如下：<br><img src="ABA5A24B7010456987E632E6367260F8" alt="image"></p>
+<h1 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h1><p>在某一阶层(总共三个阶层)作者采用的带权重的戴斯系数作为这一阶层的loss(应对数据不平衡),具体如下：<br><img src="https://i.loli.net/2019/03/26/5c997f8a28204.jpg" alt="Snipaste_2019-03-26_09-18-53.jpg"></p>
 <ul>
-<li><code>$α_{k}$</code> 代表的是图片中种类k所占比重的倒数，也就是图片中k类所占图片的比重越大，系数就越小</li>
-<li><code>$1_{ij}$</code> 代表的是图像中某一个像素点是否被label,额。。。也就是说作者用于训练的图像的金标准并不是完整的<br></li>
+<li><script type="math/tex">α_{k}</script> 代表的是图片中种类k所占比重的倒数，也就是图片中k类所占图片的比重越大，系数就越小</li>
+<li><script type="math/tex">1_{ij}</script> 代表的是图像中某一个像素点是否被label,额。。。也就是说作者用于训练的图像的金标准并不是完整的<br></li>
 </ul>
-<p>完整的loss为<br><br><img src="C2929AA30C0844DCBACE8B22749A8A47" alt="image"></p>
+<p>完整的loss为<br></p>
+<p><img src="https://i.loli.net/2019/03/26/5c997e281a1f2.jpg" alt="Snipaste_2019-03-26_09-19-02.jpg"></p>
 <ul>
 <li>也就是说某一个阶层的loss都会与上一个阶层做一次带权重的相加，这里的M的代表的是总共使用了几个Unet结构</li>
-<li><code>$β_{m}$</code> 代表的是作者分配给每个阶层的权重，这里作者给与的分配结果从上到下为0.8，0.16，0.04</li>
+<li><script type="math/tex">β_{m}</script> 代表的是作者分配给每个阶层的权重，这里作者给与的分配结果从上到下为0.8，0.16，0.04</li>
 </ul>
 <h1 id="一些细节"><a href="#一些细节" class="headerlink" title="一些细节"></a>一些细节</h1><ul>
 <li>原始图片太大，作者采用了patch的方式进行训练</li>
 </ul>
-<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img src="6F932C249F9F4579B9E62BDB3F356BF1" alt="image"></p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img src="https://i.loli.net/2019/03/26/5c997e285580c.jpg" alt="Snipaste_2019-03-26_09-18-35.jpg"></p>
 <ul>
 <li>可以看到作者得出的结果在dice上取得的效果还是很可观的</li>
 </ul>
@@ -687,7 +688,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
