@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leiy.live/"/>
-  <updated>2019-03-26T12:08:33.508Z</updated>
+  <updated>2019-03-26T12:15:18.327Z</updated>
   <id>http://leiy.live/</id>
   
   <author>
@@ -17,24 +17,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>基于BESNet的组织病理学图像中细胞边界分割提升方法</title>
     <link href="http://leiy.live/2019/03/26/paper-%E5%9F%BA%E4%BA%8EBESNet%E7%9A%84%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%BB%86%E8%83%9E%E8%BE%B9%E7%95%8C%E5%88%86%E5%89%B2%E6%8F%90%E5%8D%87%E6%96%B9%E6%B3%95/"/>
     <id>http://leiy.live/2019/03/26/paper-基于BESNet的组织病理学图像中细胞边界分割提升方法/</id>
     <published>2019-03-26T11:55:48.826Z</published>
-    <updated>2019-03-26T12:08:33.508Z</updated>
+    <updated>2019-03-26T12:15:18.327Z</updated>
     
-    <content type="html"><![CDATA[<p>[toc]</p><p>论文题目：BESNet Boundary-Enhanced Segmentation of Cells in Histopathological Images <br><br>论文地址：<a href="https://link.springer.com/content/pdf/10.1007%2F978-3-030-00934-2_26.pdf" target="_blank" rel="noopener">BESNet Boundary-Enhanced Segmentation of Cells in Histopathological Images</a></p><h1 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h1><ul><li>提出了一种类似于Unet的结构，但是设置了两条解码路径用来提升对细胞边界分割的精度</li><li>在loss上做文章，自适应的调整权重，对边界分割较为困难的地方，进行更好的训练</li></ul><h1 id="idea的动机"><a href="#idea的动机" class="headerlink" title="idea的动机"></a>idea的动机</h1><ul><li>图像分割中经常会出现边界分割不准确的情况，作者想要通过自适应修改loss权重的手段，有针对性的对这些分割不准确的区域进行更好的训练</li></ul><h1 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h1><p><img src="https://i.loli.net/2019/03/26/5c9a15b457a5f.jpg" alt="Snipaste_2019-03-26_20-02-30.jpg"></p><ul><li>网络结构的核心思想：训练目标细胞的边界，并利用它们的响应自适应加权整个细胞分割的训练损失。这使得能够在训练中对目标细胞较困难的部分施加更大的权重。</li><li>论文所提出的结构其实很好理解，与传统Unet还是有些不一样的是这边是4层，而传统的Unet是5层，并且每一层的features的数目和Unet不一样，我感觉这边作者去除最后一层的目的在于减小参数量，论文最后也有说这种结构所导致计算量比原始Unet来的多。</li><li>BDP的输出是一张概率图，需要注意的是BDP训练采用的图片和MDP的图片不一样，BDP是细胞边界图片(只是标记了细胞边界即空心)，而MDP采用的是实心的图片。</li><li>这边作者在结构上采用了两种跨通道连接方式，一种是summation，另一种是concatenation,我其实并不很理解这两种跨通道连接方式的区别（我感觉没太大区别）。</li></ul><h1 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h1><ul><li><p>在这篇文章中，作者分别对两条路径采用了不同的loss,紧接着的下面这个loss对应的BDP路径的输出，这个loss的目的在于学习边界的前景像素有多难 <br><br><img src="https://i.loli.net/2019/03/26/5c9a15b40cf4a.jpg" alt="Snipaste_2019-03-26_20-02-55.jpg"></p></li><li><p>从上面BDP loss能看出其实就是无任何修改的categorical_crossentropy loss,BDP 的输出通常在边界处表现良好，但在不太清晰或具有罕见外观类型的边界处可能会变低。这意味着BDP概率输出低的边界特征难以通过网络进行训练。为了解决这个问题，作者想到了，通过自适应加权MDP分支的损失函数，MDP对这些难以分辨的部分进行加强的训练，下面这个loss就是作者提出来的，也是本文的创新点之一：</p></li></ul><p><img src="https://i.loli.net/2019/03/26/5c9a15b3e1a0a.jpg" alt="Snipaste_2019-03-26_20-03-33.jpg"></p><ul><li>其中b(x)就是BDP的输出，还有就是这边还有两个超参数需要调节（嗯。。。有点烦）。</li></ul><h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><ul><li>作者从Detection和Segmentation两方面来讨论自己提出的方法，下面是分别的结果</li><li>Detection<br><img src="https://i.loli.net/2019/03/26/5c9a15b4ada1f.jpg" alt="Snipaste_2019-03-26_20-04-11.jpg"></li><li>Segmentation</li></ul><p><img src="https://i.loli.net/2019/03/26/5c9a15b4ae246.jpg" alt="Snipaste_2019-03-26_20-04-34.jpg"></p><ul><li>更为细节的结果</li><li><img src="https://i.loli.net/2019/03/26/5c9a15b4ac837.jpg" alt="Snipaste_2019-03-26_20-05-14.jpg"></li></ul><h1 id="一些感悟"><a href="#一些感悟" class="headerlink" title="一些感悟"></a>一些感悟</h1><ul><li>这篇文章提出的加权重的loss与其他论文提出加权重的loss不同的是，这篇文章的loss是像素级的，也就是每个像素给的loss可能是互不相同的。</li><li>我其实感觉作者作者所作的对比实验有点少，并且与之对比的是原始的Unet，Unet是2015年提出来的，结构也有些老。</li></ul><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul><li>刚入坑深度学习的新人，有什么写的不对的地方欢迎鞭策！！！</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>论文题目：BESNet Boundary-Enhanced Segmentation of Cells in Histopathological Images<br>论文地址：<a href="https://link.springer.com/content/pdf/10.1007%2F978-3-030-00934-2_26.pdf" target="_blank" rel="noopener">BESNet Boundary-Enhanced Segmentation of Cells in Histopathological Images</a></p><h1 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h1><ul><li>提出了一种类似于Unet的结构，但是设置了两条解码路径用来提升对细胞边界分割的精度</li><li>在loss上做文章，自适应的调整权重，对边界分割较为困难的地方，进行更好的训练</li></ul><h1 id="idea的动机"><a href="#idea的动机" class="headerlink" title="idea的动机"></a>idea的动机</h1><ul><li>图像分割中经常会出现边界分割不准确的情况，作者想要通过自适应修改loss权重的手段，有针对性的对这些分割不准确的区域进行更好的训练</li></ul><h1 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h1><p><img src="https://i.loli.net/2019/03/26/5c9a15b457a5f.jpg" alt="Snipaste_2019-03-26_20-02-30.jpg"></p><ul><li>网络结构的核心思想：训练目标细胞的边界，并利用它们的响应自适应加权整个细胞分割的训练损失。这使得能够在训练中对目标细胞较困难的部分施加更大的权重。</li><li>论文所提出的结构其实很好理解，与传统Unet还是有些不一样的是这边是4层，而传统的Unet是5层，并且每一层的features的数目和Unet不一样，我感觉这边作者去除最后一层的目的在于减小参数量，论文最后也有说这种结构所导致计算量比原始Unet来的多。</li><li>BDP的输出是一张概率图，需要注意的是BDP训练采用的图片和MDP的图片不一样，BDP是细胞边界图片(只是标记了细胞边界即空心)，而MDP采用的是实心的图片。</li><li>这边作者在结构上采用了两种跨通道连接方式，一种是summation，另一种是concatenation,我其实并不很理解这两种跨通道连接方式的区别（我感觉没太大区别）。</li></ul><h1 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h1><ul><li><p>在这篇文章中，作者分别对两条路径采用了不同的loss,紧接着的下面这个loss对应的BDP路径的输出，这个loss的目的在于学习边界的前景像素有多难 <br><br><img src="https://i.loli.net/2019/03/26/5c9a15b40cf4a.jpg" alt="Snipaste_2019-03-26_20-02-55.jpg"></p></li><li><p>从上面BDP loss能看出其实就是无任何修改的categorical_crossentropy loss,BDP 的输出通常在边界处表现良好，但在不太清晰或具有罕见外观类型的边界处可能会变低。这意味着BDP概率输出低的边界特征难以通过网络进行训练。为了解决这个问题，作者想到了，通过自适应加权MDP分支的损失函数，MDP对这些难以分辨的部分进行加强的训练，下面这个loss就是作者提出来的，也是本文的创新点之一：</p></li></ul><p><img src="https://i.loli.net/2019/03/26/5c9a15b3e1a0a.jpg" alt="Snipaste_2019-03-26_20-03-33.jpg"></p><ul><li>其中b(x)就是BDP的输出，还有就是这边还有两个超参数需要调节（嗯。。。有点烦）。</li></ul><h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><ul><li>作者从Detection和Segmentation两方面来讨论自己提出的方法，下面是分别的结果</li><li>Detection<br><img src="https://i.loli.net/2019/03/26/5c9a15b4ada1f.jpg" alt="Snipaste_2019-03-26_20-04-11.jpg"></li><li>Segmentation</li></ul><p><img src="https://i.loli.net/2019/03/26/5c9a15b4ae246.jpg" alt="Snipaste_2019-03-26_20-04-34.jpg"></p><ul><li>更为细节的结果<br><img src="https://i.loli.net/2019/03/26/5c9a15b4ac837.jpg" alt="Snipaste_2019-03-26_20-05-14.jpg"></li></ul><h1 id="一些感悟"><a href="#一些感悟" class="headerlink" title="一些感悟"></a>一些感悟</h1><ul><li>这篇文章提出的加权重的loss与其他论文提出加权重的loss不同的是，这篇文章的loss是像素级的，也就是每个像素给的loss可能是互不相同的。</li><li>我其实感觉作者作者所作的对比实验有点少，并且与之对比的是原始的Unet，Unet是2015年提出来的，结构也有些老。</li></ul><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul><li>刚入坑深度学习的新人，有什么写的不对的地方欢迎鞭策！！！</li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;[toc]&lt;/p&gt;
-&lt;p&gt;论文题目：BESNet Boundary-Enhanced Segmentation of Cells in Histopathological Images &lt;br&gt;&lt;br&gt;论文地址：&lt;a href=&quot;https://link.springer.
+        &lt;p&gt;论文题目：BESNet Boundary-Enhanced Segmentation of Cells in Histopathological Images&lt;br&gt;论文地址：&lt;a href=&quot;https://link.springer.com/content/pdf/10
       
     
     </summary>
     
+      <category term="Paper" scheme="http://leiy.live/categories/Paper/"/>
+    
+      <category term="MICCAI2018-基于BESNet的组织病理学图像中细胞边界分割提升方法" scheme="http://leiy.live/categories/Paper/MICCAI2018-%E5%9F%BA%E4%BA%8EBESNet%E7%9A%84%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6%E5%9B%BE%E5%83%8F%E4%B8%AD%E7%BB%86%E8%83%9E%E8%BE%B9%E7%95%8C%E5%88%86%E5%89%B2%E6%8F%90%E5%8D%87%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="Paper" scheme="http://leiy.live/tags/Paper/"/>
     
   </entry>
   
